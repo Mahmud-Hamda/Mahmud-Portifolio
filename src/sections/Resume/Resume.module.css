@@ -1,0 +1,205 @@
+.root {
+  box-sizing: border-box;
+}
+
+.resume-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  color: #121212;
+}
+
+.resume-heading i {
+  width: 28px;
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 22px;
+  line-height: 1;
+  text-align: center;
+}
+
+.resume-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 24px 28px;
+  margin-bottom: 25px;
+}
+
+.resume-card-date {
+  margin: 4px 0 0;
+  color: #3a3a3a;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.resume-group-label {
+  margin: 8px 0 12px;
+  color: #121212;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.resume-card-title {
+  margin-bottom: 4px;
+  color: #121212;
+  font-size: 24px;
+  line-height: 1.417;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.resume-card-place {
+  margin: 0;
+  color: #3a3a3a;
+  font-size: 18px;
+  line-height: 1.556;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.downloadDetail {
+  max-width: 36rem;
+  margin: 12px auto 0;
+  color: #121212;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+  padding: 0 42px;
+  height: 56px;
+  border: 3px solid var(--button);
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: 0 12px 22px var(--button-shadow);
+  color: var(--button-ink);
+  text-transform: uppercase;
+  text-decoration: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: 0.4s ease, color 0.4s ease;
+}
+
+.resume-download i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.resume-download::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  background-color: var(--button);
+  z-index: -1;
+  transition: 0.4s ease;
+  clip-path: circle(120% at 50% 100%);
+}
+
+.resume-download:hover:not(:disabled):not(.is-error),
+.resume-download:focus-visible:not(:disabled):not(.is-error) {
+  color: #121212;
+  border-color: var(--button);
+  box-shadow: 0 10px 18px var(--button-shadow-soft);
+  transform: translateY(-3px);
+}
+
+.resume-download:hover:not(:disabled):not(.is-error)::before,
+.resume-download:focus-visible:not(:disabled):not(.is-error)::before {
+  clip-path: circle(0% at 50% 100%);
+}
+
+.resume-download:disabled,
+.resume-download.is-downloading {
+  cursor: wait;
+  color: #fff;
+  transform: none;
+}
+
+.resume-download.is-error {
+  color: #fff;
+  border-color: #e23b6a;
+  box-shadow: 0 12px 22px rgba(226, 59, 106, 0.28);
+}
+
+.resume-download.is-error::before {
+  background-color: #e23b6a;
+  clip-path: circle(120% at 50% 100%);
+}
+
+#resume .resume-skills {
+  padding: 26px 28px;
+  margin-bottom: 8px;
+  background: transparent;
+}
+
+#resume .resume-skill-group {
+  margin: 0 0 10px;
+  color: #121212;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+#resume .resume-skill-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#resume .resume-skill-list li {
+  color: #121212;
+  font-size: 16px;
+  line-height: 1.45;
+  padding: 4px 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+  .resume-heading {
+    gap: 10px;
+  }
+
+  .resume-heading i {
+    width: 22px;
+    font-size: 18px;
+  }
+
+  .resume-card {
+    gap: 16px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+  }
+
+  .resume-card-title {
+    font-size: 17px;
+  }
+
+  .resume-card-place {
+    font-size: 16px;
+  }
+
+  #resume .resume-skills {
+    padding: 16px 16px 4px;
+  }
+}

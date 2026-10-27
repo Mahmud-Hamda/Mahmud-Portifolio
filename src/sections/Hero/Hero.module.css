@@ -1,0 +1,302 @@
+.root {
+  box-sizing: border-box;
+}
+
+/*== Scroll Down Arrow ==*/
+.scroll-down-arrow {
+  position: absolute;
+  z-index: 3;
+  bottom: 16px;
+  left: 50%;
+  margin-left: -22px;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 20px;
+  text-align: center;
+  color: #fcd966;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.scroll-down-arrow:hover,
+.scroll-down-arrow:focus-visible {
+  color: #fcd966;
+}
+.scroll-down-arrow .animated {
+  position: relative;
+  animation: fadeInDown 1.5s infinite;
+  -webkit-animation: fadeInDown 1.5s infinite;
+  -moz-animation: fadeInDown 1.5s infinite;
+  -o-animation: fadeInDown 1.5s infinite;
+}
+
+@keyframes fadeInDown {
+  0% {
+    top: -25px;
+    opacity: 0;
+  }
+  100% {
+    top: 10px;
+    opacity: 1;
+  }
+}
+
+/*=== 5.6 Hero Background ===*/
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.hero-wrap .hero-mask, .hero-wrap .hero-bg, .hero-wrap .hero-bg-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.hero-wrap .hero-mask {
+  z-index: 1;
+}
+.hero-wrap .hero-content {
+  position: relative;
+  z-index: 2;
+}
+.hero-wrap .hero-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+.hero-wrap .hero-bg-slideshow {
+  z-index: 0;
+}
+.hero-wrap .hero-bg {
+  z-index: 0;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  transition: background-image 300ms ease-in 200ms;
+}
+.hero-wrap .hero-bg.hero-bg-scroll {
+  background-attachment: scroll;
+}
+.hero-wrap .hero-bg-slideshow .hero-bg {
+  background-attachment: inherit;
+}
+.hero-wrap .hero-bg-slideshow.owl-carousel .owl-stage-outer, .hero-wrap .hero-bg-slideshow.owl-carousel .owl-stage, .hero-wrap .hero-bg-slideshow.owl-carousel .owl-item {
+  height: 100%;
+}
+
+.heroStage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  padding: 72px 40px 96px;
+  background: #161616;
+}
+
+.portrait {
+  width: min(320px, 72vw);
+  height: 400px;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 24px;
+  flex-shrink: 0;
+}
+
+.copy {
+  max-width: 38rem;
+}
+
+.name {
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.roles {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.location {
+  margin: 0 0 28px;
+  color: #f3f0e6;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 991.98px) {
+  .heroStage {
+    flex-direction: column;
+    gap: 28px;
+    padding: 88px 24px 96px;
+    text-align: center;
+  }
+
+  .portrait {
+    height: 280px;
+  }
+}
+
+.heroTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroName {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.hero-role {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+}
+
+.roleLine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+  .hero-role {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .roleLine {
+    flex: 1 0 100%;
+  }
+
+  .hero-role .Typewriter,
+  .hero-role span {
+    text-align: center;
+  }
+}
+
+.rolePause {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.hero-check {
+  color: color-mix(in srgb, var(--primary) 55%, #fff);
+  font-size: 0.62em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.hero-role .Typewriter,
+.hero-role span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.heroCopy {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 575.98px) {
+  .heroCopy.heroCopy {
+    padding-left: 16px;
+    padding-right: 56px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .hero-wrap .hero-bg {
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-down-arrow .animated {
+    animation: none;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.heroActions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  height: 56px;
+  padding: 0 42px;
+  border: 3px solid var(--button);
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: 0 12px 22px var(--button-shadow);
+  color: var(--button-ink);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.4s ease, color 0.4s ease;
+}
+
+.contactBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  background-color: var(--button);
+  z-index: -1;
+  transition: 0.4s ease;
+  clip-path: circle(120% at 50% 100%);
+}
+
+.contactBtn:hover,
+.contactBtn:focus-visible {
+  color: #fff;
+  border-color: var(--button);
+  box-shadow: 0 10px 18px var(--button-shadow-soft);
+  transform: translateY(-3px);
+}
+
+.contactBtn:hover::before,
+.contactBtn:focus-visible::before {
+  clip-path: circle(0% at 50% 100%);
+}

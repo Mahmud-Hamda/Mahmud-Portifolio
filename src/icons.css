@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("./assets/fonts/fa-solid.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/fa-brands.woff2") format("woff2");
+}
+
+.fas,
+.fa-solid,
+.fab,
+.fa-brands {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+.fas,
+.fa-solid {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.fab,
+.fa-brands {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+}
+
+.fa-circle-check::before { content: "\f058"; }
+.fa-play::before { content: "\f04b"; }
+.fa-pause::before { content: "\f04c"; }
+.fa-angles-down::before { content: "\f103"; }
+.fa-chevron-right::before { content: "\f054"; }
+.fa-star::before { content: "\f005"; }
+.fa-globe::before { content: "\f0ac"; }
+.fa-cog::before { content: "\f013"; }
+.fa-graduation-cap::before { content: "\f19d"; }
+.fa-briefcase::before { content: "\f0b1"; }
+.fa-download::before { content: "\f019"; }
+.fa-chart-simple::before { content: "\e473"; }
+.fa-location-dot::before { content: "\f3c5"; }
+.fa-phone::before { content: "\f095"; }
+.fa-envelope::before { content: "\f0e0"; }
+.fa-arrow-up::before { content: "\f062"; }
+.fa-whatsapp::before { content: "\f232"; }
+.fa-linkedin-in::before { content: "\f0e1"; }
+.fa-github::before { content: "\f09b"; }

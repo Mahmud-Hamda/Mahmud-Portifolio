@@ -1,0 +1,10 @@
+.root {
+  box-sizing: border-box;
+}
+
+.modal-content h2.modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+}

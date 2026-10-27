@@ -1,0 +1,143 @@
+.root {
+  box-sizing: border-box;
+}
+
+.fieldLabel {
+  display: block;
+  margin-bottom: 6px;
+  color: #121212;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hint,
+.fieldError,
+.status {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.hint {
+  color: #3a3a3a;
+}
+
+.fieldError,
+.statusError {
+  color: #7a1230;
+}
+
+.status {
+  margin-top: 16px;
+  color: #121212;
+  font-size: 16px;
+  text-align: center;
+}
+
+.message {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+:global(#contact-form) .invalid,
+:global(#contact-form) .invalid:focus {
+  border-color: #7a1230;
+  box-shadow: 0 0 0 3px rgba(122, 18, 48, 0.22);
+}
+
+.contact-address {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #fff;
+  color: #7b61ff;
+  font-size: 22px;
+  box-shadow: 0 10px 18px rgba(123, 97, 255, 0.18);
+}
+
+.contact-email {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+@media (min-width: 768px) {
+  .contact-address {
+    justify-content: flex-start;
+  }
+}
+
+.social-icons li.social-icons-website:hover a {
+  color: var(--primary);
+}
+
+.social-icons li.social-icons-whatsapp:hover a {
+  color: #25D366;
+}
+
+.sendBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  height: 56px;
+  padding: 0 42px;
+  border: 3px solid var(--button);
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: 0 12px 22px var(--button-shadow);
+  color: var(--button-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.4s ease, color 0.4s ease;
+}
+
+.sendBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  background-color: var(--button);
+  z-index: -1;
+  transition: 0.4s ease;
+  clip-path: circle(120% at 50% 100%);
+}
+
+.sendBtn:hover,
+.sendBtn:focus-visible {
+  color: #121212;
+  border-color: var(--button);
+  box-shadow: 0 10px 18px var(--button-shadow-soft);
+  transform: translateY(-3px);
+}
+
+.sendBtn:hover::before,
+.sendBtn:focus-visible::before {
+  clip-path: circle(0% at 50% 100%);
+}
+
+.sendBtn:disabled {
+  cursor: progress;
+  transform: none;
+}

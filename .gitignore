@@ -1,0 +1,16 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+.vite
+
+# Local editor and review notes
+.cursor
+.impeccable
+
+# Accidental nested copy of this project
+Mahmud-Portifolio/

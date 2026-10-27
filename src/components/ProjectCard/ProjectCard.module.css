@@ -1,0 +1,20 @@
+.root {
+  box-sizing: border-box;
+}
+
+.missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  margin: 0;
+  padding: 16px;
+  background: #fff;
+  color: #121212;
+  text-align: center;
+}
+
+.portfolio-overlay-details h5,
+.portfolio-overlay-details span {
+  overflow-wrap: anywhere;
+}
