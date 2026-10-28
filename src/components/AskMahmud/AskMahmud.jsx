@@ -35,10 +35,23 @@ const replyTo = (raw) => {
     };
   }
 
+  if (/netflix|clone|tmdb|movie/.test(q)) {
+    return {
+      text: "The Netflix Clone is a movie and TV browser Mahmud built with React and the TMDB API. It has search, trailers, accounts, and a saved My List, and it is live on Vercel.",
+      actions: [
+        { label: "Open the live site", href: "https://netflix-clone-yscv.vercel.app/" },
+        { label: "View the code", href: "https://github.com/Mahmud-Hamda/Netflix-Clone" },
+      ],
+    };
+  }
+
   if (/project|portfolio|client|case stud/.test(q)) {
     return {
-      text: "The project cards are layout samples. They are not completed client projects. Mahmud's finished work on this page is his background: biomedical engineering, cybersecurity, and AI-powered full-stack development.",
-      actions: [{ label: "See My Work", section: "portfolio" }],
+      text: "The first card under My Work is a real project: a Netflix Clone built with React and the TMDB API, live on Vercel. The other cards are layout samples, not completed client projects.",
+      actions: [
+        { label: "See My Work", section: "portfolio" },
+        { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
+      ],
     };
   }
 

@@ -29,7 +29,9 @@ Visitors use the public site at https://mahmudhamda.tech/ as one scrolling page:
 
 The current site has a side menu, about details, a services list, education and experience, a skills list, a portfolio grid, testimonials, a resume download, an EmailJS contact form, and a color switcher. Those describe what is built today. They were not confirmed as frozen.
 
-Confirmed constraint: the portfolio cards titled "Project Title 1" through "Project Title 7", and the sample testimonials, are placeholders. Future work must not describe them as real client engagements.
+Confirmed constraint: the portfolio cards titled "Project Title 2" through "Project Title 7", and the sample testimonials, are placeholders. Future work must not describe them as real client engagements.
+
+The first portfolio card is a real student project: Netflix Clone, a React and TMDB movie browser at https://netflix-clone-yscv.vercel.app/ with code at https://github.com/Mahmud-Hamda/Netflix-Clone. It is not a client engagement and uses no AI.
 
 ## Brand Commitments
 
@@ -46,7 +48,7 @@ The name is Mahmud Hamda. The public site is https://mahmudhamda.tech/. The bind
 
 Absences future work must not fill in:
 
-- No confirmed client case studies. The project cards and testimonials are placeholders.
+- No confirmed client case studies. Apart from the Netflix Clone, the project cards and the testimonials are placeholders.
 - Do not invent clients, quotes, or metrics.
 
 ## Product Principles

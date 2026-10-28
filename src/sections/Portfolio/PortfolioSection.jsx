@@ -9,6 +9,9 @@ import project4 from "../../assets/images/projects/project-4.jpg";
 import project5 from "../../assets/images/projects/project-5.jpg";
 import project6 from "../../assets/images/projects/project-6.jpg";
 import project7 from "../../assets/images/projects/project-7.jpg";
+import netflixCover from "../../assets/images/projects/netflix-clone-cover.jpg";
+import netflixHome from "../../assets/images/projects/netflix-clone-home.jpg";
+import netflixRows from "../../assets/images/projects/netflix-clone-rows.jpg";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -18,7 +21,26 @@ const filters = [
 ];
 
 const projects = [
-  { title: "Project Title 1", thumbImage: project1, sliderImages: [project1, project5], categories: ["Biomedical"] },
+  {
+    title: "Netflix Clone",
+    thumbImage: netflixCover,
+    sliderImages: [netflixHome, netflixRows],
+    categories: ["AI-powered-full-stack"],
+    summary: "A Netflix-style movie and TV browser with search, trailers, accounts, and a saved My List.",
+    stack: ["React 19", "React Router 7", "TMDB API", "Vite", "Vercel"],
+    liveUrl: "https://netflix-clone-yscv.vercel.app/",
+    repoUrl: "https://github.com/Mahmud-Hamda/Netflix-Clone",
+    description:
+      "I built a movie and TV browser in the style of Netflix. Posters, backdrops, descriptions, and trailers come from the TMDB API. Accounts and My List live in the browser's local storage, so there is no account server.",
+    features: [
+      "Home, TV Shows, Movies, and New & Popular rows from TMDB",
+      "Search from the header, with a full results page",
+      "Play opens the title's YouTube trailer when TMDB has one",
+      "Sign up and sign in, with passwords stored as salted PBKDF2 hashes",
+      "A separate My List for each account",
+    ],
+    note: "Student project. Not affiliated with Netflix.",
+  },
   { title: "Project Title 2", thumbImage: project2, sliderImages: [project2, project5], categories: ["Cybersecurity"] },
   { title: "Project Title 3", thumbImage: project3, sliderImages: [project3, project5], categories: ["AI-powered-full-stack"] },
   { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },

@@ -18,3 +18,183 @@
 .portfolio-overlay-details span {
   overflow-wrap: anywhere;
 }
+
+.projectLive {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(18, 18, 18, 0.06),
+    0 18px 36px rgba(18, 18, 18, 0.1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectLive:hover,
+.projectLive:focus-within {
+  transform: translateY(-4px);
+  box-shadow:
+    0 2px 4px rgba(18, 18, 18, 0.06),
+    0 26px 48px color-mix(in srgb, var(--button) 22%, transparent);
+}
+
+.portfolio .portfolio-box.projectLive .portfolio-img {
+  border-radius: 0 !important;
+}
+
+.portfolio .portfolio-box.projectLive:hover .portfolio-overlay,
+.portfolio .portfolio-box.projectLive:focus-within .portfolio-overlay {
+  opacity: 0;
+}
+
+.portfolio .portfolio-box.projectLive:hover .portfolio-img img,
+.portfolio .portfolio-box.projectLive:focus-within .portfolio-img img {
+  filter: none;
+  transform: none;
+}
+
+.portfolio .portfolio-box.projectLive .portfolio-img:hover .portfolio-overlay,
+.portfolio .portfolio-box.projectLive .portfolio-img:focus-within .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio .portfolio-box.projectLive .portfolio-img:hover img {
+  transform: scale(1.04);
+}
+
+.liveBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 999px;
+  background: rgba(10, 10, 12, 0.78);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.25);
+}
+
+.projectBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px 20px;
+  text-align: left;
+}
+
+.projectName {
+  margin: 0;
+  color: #121212;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.projectSummary {
+  margin: 0;
+  color: #4c4d4d;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stackList li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--button) 9%, #fff);
+  color: color-mix(in srgb, var(--button) 70%, #121212);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.linkPrimary,
+.linkSecondary {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.linkPrimary {
+  background: var(--button);
+  color: var(--button-ink);
+}
+
+.linkPrimary:hover,
+.linkPrimary:focus-visible {
+  background: var(--button-dark);
+  color: var(--button-ink);
+}
+
+.linkSecondary {
+  border: 1px solid #d7d7dc;
+  background: #fff;
+  color: #121212;
+}
+
+.linkSecondary:hover,
+.linkSecondary:focus-visible {
+  border-color: #121212;
+  color: #121212;
+}
+
+@media (hover: none), (max-width: 991.98px) {
+  .portfolio .portfolio-box.projectLive .portfolio-overlay {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectLive,
+  .linkPrimary,
+  .linkSecondary {
+    transition: none;
+  }
+
+  .projectLive:hover,
+  .projectLive:focus-within {
+    transform: none;
+  }
+
+  .portfolio .portfolio-box.projectLive .portfolio-img:hover img {
+    transform: none;
+  }
+}
