@@ -11,6 +11,7 @@ import Testimonials from "./sections/Testimonials/Testimonials";
 import ContactSection from "./sections/Contact/ContactSection";
 import Footer from "./components/Footer/Footer";
 import ColorSwitcher from "./components/ColorSwitcher/ColorSwitcher";
+import AskMahmud from "./components/AskMahmud/AskMahmud";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 import Disclaimer from "./components/Disclaimer/Disclaimer";
 import Preloader from "./components/Preloader/Preloader";
@@ -57,6 +58,7 @@ export default function App() {
       <TermsAndConditions />
       <Disclaimer />
       <ColorSwitcher />
+      <AskMahmud />
     </div>
   );
 }

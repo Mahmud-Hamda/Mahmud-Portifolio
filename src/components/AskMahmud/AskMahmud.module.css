@@ -1,0 +1,231 @@
+.dock {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1020;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: calc(100vw - 32px);
+}
+
+.launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  padding: 0 14px 0 2px;
+  border: 1px solid color-mix(in srgb, var(--button-ink) 28%, var(--button));
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #fff 24%, var(--button)) 0%,
+    var(--button) 46%,
+    color-mix(in srgb, #000 26%, var(--button)) 100%
+  );
+  color: var(--button-ink);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 38%, transparent),
+    0 8px 16px color-mix(in srgb, var(--button) 34%, transparent);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.aiMark {
+  box-sizing: border-box;
+  width: 38px;
+  height: 38px;
+  padding: 2px;
+  flex: none;
+  border-radius: 50%;
+  background: #fff3cd;
+}
+
+.launcher:hover,
+.launcher:focus-visible {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #fff 34%, var(--button)) 0%,
+    color-mix(in srgb, #fff 8%, var(--button)) 48%,
+    color-mix(in srgb, #000 14%, var(--button)) 100%
+  );
+}
+
+.launcher:active {
+  background: linear-gradient(
+    180deg,
+    var(--button) 0%,
+    color-mix(in srgb, #000 22%, var(--button)) 100%
+  );
+}
+
+.panel {
+  width: min(360px, calc(100vw - 32px));
+  max-height: min(520px, calc(100vh - 120px));
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #121212;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid #ececec;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.note {
+  margin: 2px 0 0;
+  color: #595959;
+  font-size: 13px;
+}
+
+.close {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #121212;
+}
+
+.close:hover,
+.close:focus-visible {
+  background: #f3f3f3;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  overflow: auto;
+}
+
+.assistant,
+.user {
+  max-width: 92%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.assistant {
+  align-self: flex-start;
+  background: #f4f4f6;
+}
+
+.user {
+  align-self: flex-end;
+  background: var(--button);
+  color: var(--button-ink);
+}
+
+.assistant p,
+.user p {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.actions a,
+.actions button,
+.prompts button {
+  border: 1px solid #d7d7d7;
+  border-radius: 999px;
+  background: #fff;
+  color: #121212;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.actions a:hover,
+.actions button:hover,
+.prompts button:hover,
+.actions a:focus-visible,
+.actions button:focus-visible,
+.prompts button:focus-visible {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 12px;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid #ececec;
+}
+
+.form input {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  padding: 0 12px;
+  color: #121212;
+}
+
+.form button {
+  height: 42px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--button);
+  color: var(--button-ink);
+  font-weight: 600;
+}
+
+.form button:disabled {
+  opacity: 0.45;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 991.98px) {
+  .dock {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
