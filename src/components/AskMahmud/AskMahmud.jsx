@@ -255,17 +255,12 @@ const AskMahmud = () => {
             <Disclaimer className={styles.disclaimer} />
             <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask Mahmud Semantically</label>
             <div className={styles.inputBox}>
-              {/* Drawn instead of a native placeholder, which cannot show the name's gradient */}
-              {!draft && (
-                <span className={styles.inputHint} aria-hidden="true">
-                  {highlightName("Ask Mahmud Semantically")}
-                </span>
-              )}
               <input
                 id="ask-mahmud-input"
                 ref={inputRef}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
+                placeholder="Ask Mahmud Semantically"
                 maxLength={240}
               />
               {draft.trim() && (
@@ -298,9 +293,7 @@ const AskMahmud = () => {
             ))}
           </g>
         </svg>
-        <span className={styles.launcherLabel}>
-          <BrandName>Ask Mahmud</BrandName>
-        </span>
+        <span>Ask Mahmud</span>
       </button>
     </div>
   );

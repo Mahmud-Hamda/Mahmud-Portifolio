@@ -294,28 +294,7 @@
   text-align: center;
 }
 
-/* A thin white outline keeps the gradient name readable on the purple launcher */
-.launcherLabel {
-  filter: drop-shadow(0 0 0.6px #fff) drop-shadow(0 0 0.6px #fff);
-}
-
-/* Not ".placeholder": Bootstrap uses that class for grey loading skeletons */
-.inputHint {
-  position: absolute;
-  left: 13px;
-  right: 44px;
-  top: 50%;
-  transform: translateY(-50%);
-  overflow: hidden;
-  color: #8e8e93;
-  font-size: 16px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  pointer-events: none;
-}
-
 .inputBox {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
