@@ -3,7 +3,6 @@ import Isotope from "isotope-layout";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProjectDetailsModal from "../../components/ProjectDetailsModal/ProjectDetailsModal";
 import project1 from "../../assets/images/projects/project-1.jpg";
-import project3 from "../../assets/images/projects/project-3.jpg";
 import project4 from "../../assets/images/projects/project-4.jpg";
 import project5 from "../../assets/images/projects/project-5.jpg";
 import project6 from "../../assets/images/projects/project-6.jpg";
@@ -14,6 +13,9 @@ import netflixArchitecture from "../../assets/images/projects/netflix-clone-arch
 import gptCloneCover from "../../assets/images/projects/gpt-clone-cover.jpg";
 import gptCloneChat from "../../assets/images/projects/gpt-clone-chat.jpg";
 import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-architecture.jpg";
+import appleCover from "../../assets/images/projects/apple-clone-cover.png";
+import appleMac from "../../assets/images/projects/apple-clone-mac.png";
+import appleIphone from "../../assets/images/projects/apple-clone-iphone.png";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -64,7 +66,25 @@ const projects = [
     ],
     note: "Student project. Not affiliated with OpenAI.",
   },
-  { title: "Project Title 3", thumbImage: project3, sliderImages: [project3, project5], categories: ["AI-powered-full-stack"] },
+  {
+    title: "Apple Clone",
+    thumbImage: appleCover,
+    sliderImages: [appleMac, appleIphone],
+    categories: ["AI-powered-full-stack"],
+    summary: "A responsive Apple store homepage. Each header item opens that product's photo and copy, and search expands in the bar.",
+    stack: ["React 19", "React Router 7", "Bootstrap 5", "Vite", "Vercel"],
+    liveUrl: "https://apple-clone-xi-lyart.vercel.app/",
+    repoUrl: "https://github.com/Mahmud-Hamda/apple-clone",
+    description:
+      "I built a responsive clone of an Apple store homepage. The header and footer stay on every page. Mac, iPhone, iPad, Watch, and TV each open that product's photo and copy. The search icon expands a field to the right and lists matching products.",
+    features: [
+      "Homepage bands for iPad Pro, MacBook Air, iPhone 11 Pro, iPhone 11, Apple TV, and Apple Watch",
+      "Header routes for Mac, iPhone, iPad, Watch, TV, Music, Support, and Cart",
+      "Search expands in the navigation bar and opens the matching product",
+      "Built as a static site for Vercel, with a route rule for Hostinger",
+    ],
+    note: "Student project. Not affiliated with Apple.",
+  },
   { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },
   { title: "Project Title 5", thumbImage: project5, sliderImages: [project1, project5], categories: ["Cybersecurity"] },
   { title: "Project Title 6", thumbImage: project6, sliderImages: [project1, project5], categories: ["Biomedical"] },

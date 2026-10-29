@@ -22,6 +22,11 @@ const netflixCloneActions = [
   { label: "View the code", href: "https://github.com/Mahmud-Hamda/Netflix-Clone" },
 ];
 
+const appleCloneActions = [
+  { label: "Open the live site", href: "https://apple-clone-xi-lyart.vercel.app/" },
+  { label: "View the code", href: "https://github.com/Mahmud-Hamda/apple-clone" },
+];
+
 const GPT_CLONE_DIAGRAM = { src: gptCloneArchitecture, alt: "GPT Clone architecture diagram" };
 const NETFLIX_CLONE_DIAGRAM = { src: netflixCloneArchitecture, alt: "Netflix Clone architecture diagram" };
 
@@ -191,10 +196,11 @@ export const KNOWLEDGE = [
     id: "both-clones",
     examples: ["tell me about the clones", "what clone projects do you have", "which clones did you build"],
     answer: {
-      text: "Mahmud has two clone projects, both live on Vercel: a Netflix Clone, a movie and TV browser built with React and the TMDB API, and a GPT Clone, a ChatGPT-style web development assistant built with React, Express, Google Gemini, and MySQL.",
+      text: "Mahmud has three clone projects, all live on Vercel: a Netflix Clone, a movie and TV browser built with React and the TMDB API; a GPT Clone, a ChatGPT-style web development assistant built with React, Express, Google Gemini, and MySQL; and an Apple Clone, a responsive Apple store homepage built with React and React Router.",
       actions: [
         { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
         { label: "Open the GPT Clone", href: gptCloneActions[0].href },
+        { label: "Open the Apple Clone", href: appleCloneActions[0].href },
       ],
     },
   },
@@ -214,6 +220,20 @@ export const KNOWLEDGE = [
     },
   },
   {
+    id: "apple-clone-summary",
+    examples: [
+      "tell me about the Apple Clone",
+      "what is the Apple Clone",
+      "apple store homepage project",
+      "what does the Apple Clone do",
+      "Apple website clone",
+    ],
+    answer: {
+      text: "The Apple Clone is a responsive Apple store homepage **Mahmud** built with React, React Router, and Bootstrap. Mac, iPhone, iPad, Watch, and TV each open that product's photo and copy, and the search icon expands a field in the navigation bar. It is live on Vercel. It is a student project and is not affiliated with Apple.",
+      actions: appleCloneActions,
+    },
+  },
+  {
     id: "projects",
     examples: [
       "what projects have you done",
@@ -224,11 +244,12 @@ export const KNOWLEDGE = [
       "case studies",
     ],
     answer: {
-      text: "The first two cards under My Work are real projects, both live on Vercel: a Netflix Clone built with React and the TMDB API, and a GPT Clone built with React, Express, Google Gemini, and MySQL. The other cards are layout samples, not completed client projects.",
+      text: "The first three cards under My Work are real projects, all live on Vercel: a Netflix Clone built with React and the TMDB API, a GPT Clone built with React, Express, Google Gemini, and MySQL, and an Apple Clone built with React and React Router. The other cards are layout samples, not completed client projects.",
       actions: [
         { label: "See My Work", section: "portfolio" },
         { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
         { label: "Open the GPT Clone", href: gptCloneActions[0].href },
+        { label: "Open the Apple Clone", href: appleCloneActions[0].href },
       ],
     },
   },
