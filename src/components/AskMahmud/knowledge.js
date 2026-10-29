@@ -234,7 +234,13 @@ export const KNOWLEDGE = [
   },
   {
     id: "testimonials",
-    examples: ["are the testimonials real", "client reviews", "what do clients say", "client speak quotes"],
+    examples: [
+      "are the testimonials real",
+      "are the testimonials genuine",
+      "client reviews",
+      "what do clients say",
+      "client speak quotes",
+    ],
     answer: {
       text: "The quotes under Client Speak are sample quotes for the layout. They are not client feedback.",
     },
@@ -291,6 +297,7 @@ export const KNOWLEDGE = [
       "are you available for hire",
       "I want to hire you",
       "are you looking for a job",
+      "are you open to new opportunities",
       "I have a project for you",
       "what is the best way to get in touch",
     ],
@@ -310,6 +317,7 @@ export const KNOWLEDGE = [
       "what is your education",
       "what degree do you have",
       "what certifications do you have",
+      "what certifications does Mahmud hold",
       "which university did you attend",
       "do you have CompTIA Security+",
     ],
@@ -350,6 +358,7 @@ export const KNOWLEDGE = [
     examples: [
       "tell me about your cybersecurity work",
       "what is your security background",
+      "are you certified in cybersecurity",
       "are you a security professional",
       "network security experience",
       "do you know cryptography and threat detection",
@@ -365,6 +374,7 @@ export const KNOWLEDGE = [
       "tell me about your biomedical engineering work",
       "what is your engineering background",
       "do you work with medical devices",
+      "do you repair hospital equipment",
       "medical equipment maintenance",
       "do you service life-support machines",
     ],
@@ -378,6 +388,7 @@ export const KNOWLEDGE = [
     examples: [
       "do you build AI apps",
       "do you build websites",
+      "can you build me a website",
       "full-stack web development services",
       "can you build a web application with AI",
       "what is your web development background",
@@ -407,7 +418,7 @@ export const KNOWLEDGE = [
   },
   {
     id: "resume",
-    examples: ["can I see your resume", "download your CV", "where is your resume"],
+    examples: ["can I see your resume", "send me your resume", "download your CV", "where is your resume"],
     answer: {
       text: "The resume is on this page. You can download it from the Resume section as Mahmud-Hamda-Resume.pdf.",
       actions: [{ label: "Go to Resume", section: "resume" }],

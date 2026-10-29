@@ -9,7 +9,7 @@ const MODEL_ID = "Xenova/all-MiniLM-L6-v2";
 // Ask Mahmud answers only when the best match reaches ANSWER_THRESHOLD and beats
 // the best match from any other answer by ANSWER_MARGIN; otherwise, at or above
 // SUGGEST_THRESHOLD it only suggests the closest question, and below it declines.
-export const ANSWER_THRESHOLD = 0.6;
+export const ANSWER_THRESHOLD = 0.75;
 export const ANSWER_MARGIN = 0.05;
 export const SUGGEST_THRESHOLD = 0.45;
 

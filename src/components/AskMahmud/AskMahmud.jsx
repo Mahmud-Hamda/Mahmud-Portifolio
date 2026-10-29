@@ -14,7 +14,13 @@ import styles from "./AskMahmud.module.css";
 
 // Shortest time the thinking dots show, so a fast answer still reads as a reply
 const THINKING_DELAY_MS = 700;
-const DISCLAIMER = "Ask Mahmud is AI and can make mistakes.";
+
+// "Ask Mahmud" uses the launcher star's gradient so the name reads as one brand
+const Disclaimer = ({ className }) => (
+  <p className={className}>
+    <span className={styles.brandName}>Ask Mahmud</span> is AI and can make mistakes.
+  </p>
+);
 
 const prompts = [
   "What do you do?",
@@ -242,7 +248,7 @@ const AskMahmud = () => {
               ask(draft);
             }}
           >
-            <p className={styles.disclaimer}>{DISCLAIMER}</p>
+            <Disclaimer className={styles.disclaimer} />
             <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask Mahmud</label>
             <div className={styles.inputBox}>
               <input
@@ -250,7 +256,7 @@ const AskMahmud = () => {
                 ref={inputRef}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
-                placeholder="Ask Mahmud"
+                placeholder="Ask Mahmud Semantically"
                 maxLength={240}
               />
               {draft.trim() && (
@@ -283,9 +289,9 @@ const AskMahmud = () => {
             ))}
           </g>
         </svg>
-        <span>Ask Mahmud Semantically</span>
+        <span>Ask Mahmud</span>
       </button>
-      <p className={styles.launcherNote}>{DISCLAIMER}</p>
+      <Disclaimer className={styles.launcherNote} />
     </div>
   );
 };

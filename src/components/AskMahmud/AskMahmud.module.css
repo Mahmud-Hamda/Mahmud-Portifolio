@@ -294,6 +294,14 @@
   text-align: center;
 }
 
+.brandName {
+  font-weight: 700;
+  background: linear-gradient(90deg, #3ad4ff 0%, #6a5cff 46%, #ff4ad8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .launcherNote {
   margin: -6px 0 0;
   padding: 2px 8px;
