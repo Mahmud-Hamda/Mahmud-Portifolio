@@ -1,9 +1,15 @@
+import { useEffect, useMemo, useRef, useState } from "react";
 import Slider from "react-slick";
 import client1 from "../../assets/images/testimonial/client-sm-1.jpg";
 import client2 from "../../assets/images/testimonial/client-sm-2.jpg";
 import client3 from "../../assets/images/testimonial/client-sm-3.jpg";
 import client4 from "../../assets/images/testimonial/client-sm-4.jpg";
 import styles from "./Testimonials.module.css";
+
+const SLIDE_INTERVAL_MS = 5000;
+
+const prefersReducedMotion = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const reviews = [
   { name: "Dennis Jacques", position: "User from USA", src: client3, desc: "Only trying it out since a few days. But up to now excellent. Seems to work flawlessly. priced simply dummy text of the printing and typesetting industry.", rating: 5 },
@@ -13,24 +19,55 @@ const reviews = [
 ];
 
 const Testimonials = () => {
-  var settings = {
-    dots: true,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    responsive: [
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 0,
-        },
-      },
-    ],
+  const sliderRef = useRef(null);
+  const onSlide = useRef(() => {});
+  const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(() => !prefersReducedMotion());
+  const [timerKey, setTimerKey] = useState(0);
+  const count = reviews.length;
+
+  onSlide.current = (next) => {
+    setCurrent(((next % count) + count) % count);
   };
+
+  const settings = useMemo(
+    () => ({
+      dots: false,
+      arrows: false,
+      infinite: count > 1,
+      speed: prefersReducedMotion() ? 0 : 600,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      beforeChange: (_previous, next) => onSlide.current(next),
+    }),
+    [count]
+  );
+
+  useEffect(() => {
+    if (!playing || count < 2) return undefined;
+    const id = window.setInterval(() => {
+      sliderRef.current?.slickNext();
+    }, SLIDE_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [playing, count, timerKey]);
+
+  const restartTimer = () => setTimerKey((key) => key + 1);
+
+  const togglePlay = () => {
+    setPlaying((isPlaying) => !isPlaying);
+    restartTimer();
+  };
+
+  const goNext = () => {
+    sliderRef.current?.slickNext();
+    restartTimer();
+  };
+
+  const goTo = (index) => {
+    sliderRef.current?.slickGoTo(index);
+    restartTimer();
+  };
+
   return (
     <section
       id="testimonial"
@@ -65,7 +102,7 @@ const Testimonials = () => {
           Sample quotes for the layout. Not client feedback.
         </p>
 
-        <Slider {...settings}>
+        <Slider {...settings} ref={sliderRef}>
           {reviews.length > 0 &&
             reviews.map((value, index) => (
               <div className="item" key={index}>
@@ -113,9 +150,77 @@ const Testimonials = () => {
               </div>
             ))}
         </Slider>
+        {count > 1 && (
+          <div className={styles.slideBar} role="group" aria-label="Client comments">
+            <button
+              type="button"
+              className={styles.slideButton}
+              onClick={togglePlay}
+              aria-label={playing ? "Pause" : "Play"}
+              aria-pressed={playing}
+            >
+              {playing ? <PauseIcon /> : <PlayIcon />}
+            </button>
+            <div className={styles.slideDots}>
+              {reviews.map((review, index) => (
+                <button
+                  key={review.name}
+                  type="button"
+                  className={
+                    index === current
+                      ? `${styles.slideDot} ${styles.slideDotOn}`
+                      : styles.slideDot
+                  }
+                  aria-label={`Show comment ${index + 1} of ${count}, ${review.name}`}
+                  aria-current={index === current ? "true" : undefined}
+                  onClick={() => goTo(index)}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              className={`${styles.slideButton} ${styles.slideNext}`}
+              onClick={goNext}
+              aria-label="Next comment"
+            >
+              <NextIcon />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 };
+
+function PlayIcon() {
+  return (
+    <svg className={styles.slideIcon} viewBox="0 0 12 12" aria-hidden="true">
+      <path d="M3.1 1.5v9L10.2 6 3.1 1.5z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function PauseIcon() {
+  return (
+    <svg className={styles.slideIcon} viewBox="0 0 12 12" aria-hidden="true">
+      <path d="M2.1 1.5h2.3v9H2.1zm5.5 0h2.3v9H7.6z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function NextIcon() {
+  return (
+    <svg className={styles.slideIcon} viewBox="0 0 12 12" aria-hidden="true">
+      <path
+        d="M4.2 2.1 8 6 4.2 9.9"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default Testimonials;
