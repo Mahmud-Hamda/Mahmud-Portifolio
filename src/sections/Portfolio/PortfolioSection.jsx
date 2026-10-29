@@ -10,7 +10,7 @@ import project6 from "../../assets/images/projects/project-6.jpg";
 import project7 from "../../assets/images/projects/project-7.jpg";
 import netflixCover from "../../assets/images/projects/netflix-clone-cover.jpg";
 import netflixHome from "../../assets/images/projects/netflix-clone-home.jpg";
-import netflixRows from "../../assets/images/projects/netflix-clone-rows.jpg";
+import netflixArchitecture from "../../assets/images/projects/netflix-clone-architecture.jpg";
 import gptCloneCover from "../../assets/images/projects/gpt-clone-cover.jpg";
 import gptCloneChat from "../../assets/images/projects/gpt-clone-chat.jpg";
 import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-architecture.jpg";
@@ -26,7 +26,7 @@ const projects = [
   {
     title: "Netflix Clone",
     thumbImage: netflixCover,
-    sliderImages: [netflixHome, netflixRows],
+    sliderImages: [netflixHome, netflixArchitecture],
     categories: ["AI-powered-full-stack"],
     summary: "A Netflix-style movie and TV browser with search, trailers, accounts, and a saved My List.",
     stack: ["React 19", "React Router 7", "TMDB API", "Vite", "Vercel"],
