@@ -16,9 +16,9 @@ const contact = {
 };
 
 const emailConfig = {
-  serviceId: "service_i86k3ms",
-  templateId: "template_si6cin9",
-  publicKey: "c9HsDgGF0tvWyVnAL",
+  serviceId: "service_7wg1syz",
+  templateId: "template_m8p1vlr",
+  publicKey: "W8WqYJpYUP3F-5A_V",
 };
 
 const limits = { name: 80, email: 254, message: 2000 };
@@ -168,15 +168,22 @@ const ContactSection = ({ profile }) => {
     sendingRef.current = true;
     setSendingMail(true);
 
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedMessage = message.trim();
+
     withTimeout(
       emailjs.send(
         emailConfig.serviceId,
         emailConfig.templateId,
         {
-          user_name: name.trim(),
-          user_email: email.trim(),
+          name: trimmedName,
+          email: trimmedEmail,
+          title: intent,
+          message: `${intent}.\n\n${trimmedMessage}`,
+          user_name: trimmedName,
+          user_email: trimmedEmail,
           intent,
-          message: `${intent}.\n\n${message.trim()}`,
         },
         emailConfig.publicKey
       ),
