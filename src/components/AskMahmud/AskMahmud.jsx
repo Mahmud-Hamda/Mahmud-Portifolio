@@ -37,6 +37,34 @@ const netflixCloneActions = [
 const GPT_CLONE_DIAGRAM = { src: gptCloneArchitecture, alt: "GPT Clone architecture diagram" };
 const NETFLIX_CLONE_DIAGRAM = { src: netflixCloneArchitecture, alt: "Netflix Clone architecture diagram" };
 
+// Ask Mahmud only repeats facts written on this page. When a question is not
+// clearly covered, it says so and offers the contact options. It never guesses.
+const DECLINE = {
+  text: "Sorry, I don't have an answer to that, and I won't guess. I can only answer from what is on this page: Mahmud's work, projects, background, and how to reach him. For anything else, please ask Mahmud directly.",
+  actions: contactActions,
+};
+
+// Questions this page has no facts for: money, personal details, opinions,
+// live information, project metrics, and requests to create or solve something.
+// Answering these from the closest keyword rule would be a guess.
+const UNSUPPORTED_REQUEST = new RegExp(
+  "\\b(" +
+    [
+      "price", "pricing", "salar", "hourly", "wages?\\b", "rates? for\\b", "charges?\\b", "fees?\\b", "budget",
+      "how much (do|does|did|would|will|is|are|to|for)\\b",
+      "age\\b", "how old", "birthday", "born", "married", "wife", "husband", "kids", "children",
+      "religio", "politic",
+      "think\\b", "opinion", "favou?rite", "prefer\\b", "better than", "worst",
+      "write (me|a|an|some|my)\\b", "generate (me|a|an|some|my)\\b", "translate", "solve (this|my|it)\\b",
+      "calculat", "compute\\b", "homework", "fix (this|my)\\b", "debug (this|my)\\b", "code for\\b",
+      "weather", "news\\b", "stocks?\\b", "crypto", "what time", "today.?s date",
+      "jokes?\\b", "poems?\\b", "songs?\\b", "riddles?\\b",
+      "how many (users|visitors|people|customers|clients)\\b", "traffic", "revenue", "downloads",
+      "(demo|walkthrough|intro) videos?\\b",
+    ].join("|") +
+    ")",
+);
+
 // Every rule below anchors its words with \b, so a word hidden inside another
 // never triggers it ("show" must not match "how", "research" must not match "reach").
 const replyTo = (raw) => {
@@ -56,10 +84,14 @@ const replyTo = (raw) => {
     };
   }
 
+  if (UNSUPPORTED_REQUEST.test(q)) {
+    return DECLINE;
+  }
+
   const isAboutGptClone = /\b(gpt|chat ?bots?|gemini|llm|ai chat|chat app|ai assistant)/.test(q);
   const isAboutNetflixClone = /\b(netflix|tmdb|movies?)\b/.test(q);
 
-  if (/\b(diagrams?|architecture|flow ?charts?|charts?|visual|pictures?|images?|draw)/.test(q)) {
+  if (/\b(diagrams?|architecture|flow ?charts?|charts?|visual|pictures?|images?)/.test(q)) {
     if (isAboutGptClone && !isAboutNetflixClone) {
       return {
         text: "Here is the GPT Clone architecture diagram. Select it to open it full size.",
@@ -250,10 +282,7 @@ const replyTo = (raw) => {
     };
   }
 
-  return {
-    text: "I can answer from this page: Mahmud's work, his background, and how to reach him. For anything else, send him a note.",
-    actions: contactActions,
-  };
+  return DECLINE;
 };
 
 const polar = (angle, radius) => {
