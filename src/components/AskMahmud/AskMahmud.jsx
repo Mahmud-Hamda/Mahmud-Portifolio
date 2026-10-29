@@ -57,20 +57,20 @@ const replyTo = (raw) => {
 
     if (/stack|built|build|tech|work|architect|backend|frontend|database|\bapi\b|deploy|how/.test(q)) {
       return {
-        text: "Mahmud Hamda built the GPT Clone with a React and Vite frontend and a Node and Express API, both on Vercel. The API sends each question, with the visitor's recent messages as context, to Google Gemini, and saves both sides of the chat in MySQL on TiDB Cloud. A system prompt keeps the answers to full-stack web development.",
+        text: "The GPT Clone has a React and Vite frontend and a Node and Express API, both on Vercel. The API sends each question, with the visitor's recent messages as context, to Google Gemini, and saves both sides of the chat in MySQL on TiDB Cloud. A system prompt keeps the answers to full-stack web development.",
         actions: [...gptCloneActions, { label: "See the card", section: "portfolio" }],
       };
     }
 
     return {
-      text: "Mahmud Hamda built the GPT Clone, a ChatGPT-style web app, with React, Express, Google Gemini, and MySQL. It answers full-stack web development questions, politely declines off-topic ones, follows up using the recent conversation, renders code in Markdown, and keeps each visitor's chat history private to their browser. It is live on Vercel.",
+      text: "The GPT Clone is a ChatGPT-style assistant **Mahmud** built with React, Express, Google Gemini, and MySQL. It answers full-stack web development questions, politely declines off-topic ones, follows up using the recent conversation, renders code in Markdown, and keeps each visitor's chat history private to their browser. It is live on Vercel.",
       actions: gptCloneActions,
     };
   }
 
   if (/\bclones?\b/.test(q) && !/netflix|tmdb|movie/.test(q)) {
     return {
-      text: "Mahmud Hamda built two clone projects, both live on Vercel: a Netflix Clone, a movie and TV browser built with React and the TMDB API, and a GPT Clone, a ChatGPT-style web development assistant built with React, Express, Google Gemini, and MySQL.",
+      text: "Mahmud has two clone projects, both live on Vercel: a Netflix Clone, a movie and TV browser built with React and the TMDB API, and a GPT Clone, a ChatGPT-style web development assistant built with React, Express, Google Gemini, and MySQL.",
       actions: [
         { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
         { label: "Open the GPT Clone", href: gptCloneActions[0].href },
@@ -80,7 +80,7 @@ const replyTo = (raw) => {
 
   if (/netflix|tmdb|movie/.test(q)) {
     return {
-      text: "Mahmud Hamda built the Netflix Clone, a movie and TV browser, with React and the TMDB API. It has search, trailers, accounts, and a saved My List, and it is live on Vercel.",
+      text: "The Netflix Clone is a movie and TV browser Mahmud built with React and the TMDB API. It has search, trailers, accounts, and a saved My List, and it is live on Vercel.",
       actions: [
         { label: "Open the live site", href: "https://netflix-clone-yscv.vercel.app/" },
         { label: "View the code", href: "https://github.com/Mahmud-Hamda/Netflix-Clone" },
@@ -90,7 +90,7 @@ const replyTo = (raw) => {
 
   if (/project|portfolio|client|case stud/.test(q)) {
     return {
-      text: "The first two cards under My Work are real projects Mahmud Hamda built, both live on Vercel: a Netflix Clone built with React and the TMDB API, and a GPT Clone built with React, Express, Google Gemini, and MySQL. The other cards are layout samples, not completed client projects.",
+      text: "The first two cards under My Work are real projects, both live on Vercel: a Netflix Clone built with React and the TMDB API, and a GPT Clone built with React, Express, Google Gemini, and MySQL. The other cards are layout samples, not completed client projects.",
       actions: [
         { label: "See My Work", section: "portfolio" },
         { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
@@ -191,7 +191,7 @@ const replyTo = (raw) => {
 
   if (/full[- ]?stack|web dev|website|ai|chatbot|rag|react|node/.test(q)) {
     return {
-      text: "Mahmud builds AI-powered full-stack web applications with React, Node and Express, MySQL, and REST APIs. That includes chatbots, semantic search, and retrieval-augmented generation when a project needs them. The GPT Clone he built, a web development assistant on Google Gemini, is a live example.",
+      text: "Mahmud builds AI-powered full-stack web applications with React, Node and Express, MySQL, and REST APIs. That includes chatbots, semantic search, and retrieval-augmented generation when a project needs them. His GPT Clone, a web development assistant on Google Gemini, is a live example.",
       actions: [
         { label: "See AI-powered full-stack", section: "services" },
         { label: "Open the GPT Clone", href: gptCloneActions[0].href },
@@ -240,6 +240,12 @@ const sparklePaths = [0, 1, 2, 3, 4].map((k) => {
     .map(([px, py], n) => `${n ? "L" : "M"}${px.toFixed(2)} ${py.toFixed(2)}`)
     .join("") + "Z";
 });
+
+// Answers may mark words as **bold**
+const renderText = (text) =>
+  text
+    .split(/\*\*(.+?)\*\*/g)
+    .map((part, index) => (index % 2 ? <strong key={index}>{part}</strong> : part));
 
 const AskMahmud = () => {
   const titleId = useId();
@@ -302,7 +308,7 @@ const AskMahmud = () => {
           <div className={styles.messages} ref={listRef}>
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={message.role === "user" ? styles.user : styles.assistant}>
-                <p>{message.text}</p>
+                <p>{renderText(message.text)}</p>
                 {message.actions && (
                   <div className={styles.actions}>
                     {message.actions.map((action) =>
