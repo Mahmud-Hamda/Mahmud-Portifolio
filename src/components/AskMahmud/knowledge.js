@@ -23,7 +23,7 @@ const netflixCloneActions = [
 ];
 
 const appleCloneActions = [
-  { label: "Open the live site", href: "https://apple-clone-xi-lyart.vercel.app/" },
+  { label: "Open the live site", href: "https://student-layout.vercel.app/" },
   { label: "View the code", href: "https://github.com/Mahmud-Hamda/apple-clone" },
 ];
 

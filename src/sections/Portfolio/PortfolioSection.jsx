@@ -73,7 +73,7 @@ const projects = [
     categories: ["AI-powered-full-stack"],
     summary: "A responsive Apple store homepage. Each header item opens that product's photo and copy, and search expands in the bar.",
     stack: ["React 19", "React Router 7", "Bootstrap 5", "Vite", "Vercel"],
-    liveUrl: "https://apple-clone-xi-lyart.vercel.app/",
+    liveUrl: "https://student-layout.vercel.app/",
     repoUrl: "https://github.com/Mahmud-Hamda/apple-clone",
     description:
       "I built a responsive clone of an Apple store homepage. The header and footer stay on every page. Mac, iPhone, iPad, Watch, and TV each open that product's photo and copy. The search icon expands a field to the right and lists matching products.",
