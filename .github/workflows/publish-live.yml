@@ -1,0 +1,48 @@
+name: Publish the live portfolio
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Build the site
+        run: |
+          npm ci
+          npm run build
+
+      - name: Publish the build to the live repository
+        env:
+          DEPLOY_KEY: ${{ secrets.LIVE_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/live_deploy
+          chmod 600 ~/.ssh/live_deploy
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/live_deploy -o IdentitiesOnly=yes"
+          git clone --depth 1 git@github.com:Mahmud-Hamda/Mahmud-Portifolio-live.git /tmp/live
+          find /tmp/live -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a dist/. /tmp/live/
+          git -C /tmp/live config user.name "Mahmud-Hamda"
+          git -C /tmp/live config user.email "mkhamda3@gmail.com"
+          git -C /tmp/live add -A
+          if git -C /tmp/live diff --cached --quiet; then
+            echo "The live site already matches this build."
+          else
+            git -C /tmp/live commit -m "Publish the site from the source repository."
+            git -C /tmp/live push origin main
+          fi
