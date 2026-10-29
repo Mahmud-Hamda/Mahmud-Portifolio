@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Typewriter from "typewriter-effect";
 import heroBackground from "../../assets/images/intro-bg.jpg";
+import { highlightName } from "../../components/BrandName/BrandName";
 import styles from "./Hero.module.css";
 
 const hero = {
@@ -72,7 +73,7 @@ const Hero = () => {
                   {hero.welcome}
                 </p>
                 <div className={"text-16 fw-600 text-white mb-2 mb-md-3 " + styles.heroTitle}>
-                  <h2 className={styles.heroName}>{hero.name}</h2>
+                  <h2 className={styles.heroName}>{highlightName(hero.name)}</h2>
                   <div className="hero-role">
                     <span className={styles.roleLine}>
                       <i className="fas fa-circle-check hero-check" aria-hidden="true" />

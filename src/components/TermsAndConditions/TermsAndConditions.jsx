@@ -1,3 +1,4 @@
+import BrandName from "../BrandName/BrandName";
 import styles from "./TermsAndConditions.module.css";
 
 const TermsAndConditions = () => {
@@ -34,7 +35,7 @@ const TermsAndConditions = () => {
               <a href="https://mahmudhamda.tech/" target="_blank" rel="noreferrer">
                 mahmudhamda.tech
               </a>
-              , the personal portfolio of Mahmud Hamda in Denver, Colorado.
+              , the personal portfolio of <BrandName>Mahmud Hamda</BrandName> in Denver, Colorado.
               Last updated October 15, 2026.
             </p>
             <h3 className={"mb-3 mt-4 "}>
@@ -43,26 +44,26 @@ const TermsAndConditions = () => {
             <p>
               You may browse this site, read the resume and project samples, and
               send a message through the contact form. The writing, layout, and
-              project descriptions are Mahmud Hamda’s own work. Please do not
+              project descriptions are <BrandName>Mahmud Hamda</BrandName>’s own work. Please do not
               copy them and present them as your own, and do not use the site to
               send spam, malware, or unlawful requests.
             </p>
             <h4 className={"text-4 mt-4 "}>
-              Part I – Information Mahmud collects and controls
+              Part I – Information <BrandName>Mahmud</BrandName> collects and controls
             </h4>
             <p>
-              If you use the contact form, Mahmud receives your name, email
+              If you use the contact form, <BrandName>Mahmud</BrandName> receives your name, email
               address, and message, and keeps them so he can reply. The site
               does not ask you to create an account, and it does not collect
               payment details.
             </p>
             <h4 className={"text-4 mt-4 "}>
-              Part II – Information that Mahmud processes on your behalf
+              Part II – Information that <BrandName>Mahmud</BrandName> processes on your behalf
             </h4>
             <p>
               This portfolio does not host accounts or data for other businesses.
-              A message you send is delivered through EmailJS so it can reach
-              Mahmud’s inbox. The page also loads fonts from Google Fonts.
+              A message you send is delivered through EmailJS so it can reach{" "}
+              <BrandName>Mahmud</BrandName>’s inbox. The page also loads fonts from Google Fonts.
               The icons are files on this site. Google Fonts receives the
               technical details a browser normally sends, such as your IP
               address, when those font files load.
@@ -72,8 +73,8 @@ const TermsAndConditions = () => {
             </h4>
             <p>
               The site is offered as a personal portfolio. Project dates, job
-              history, and skill notes describe Mahmud’s background and are not
-              a contract or a job offer. Mahmud may update these terms by
+              history, and skill notes describe <BrandName>Mahmud</BrandName>’s background and are not
+              a contract or a job offer. <BrandName>Mahmud</BrandName> may update these terms by
               changing this page. Questions can be sent to{" "}
               <a href="mailto:mkhamda3@gmail.com">mkhamda3@gmail.com</a> or by
               phone at +1 720 365 1849.
@@ -82,7 +83,7 @@ const TermsAndConditions = () => {
               Privacy Policy
             </h3>
             <p>
-              Mahmud Hamda, 1530 S Florence Ct, Denver, Colorado 80247, is the
+              <BrandName>Mahmud Hamda</BrandName>, 1530 S Florence Ct, Denver, Colorado 80247, is the
               person responsible for information collected through this site.
             </p>
             <ol className="lh-lg">

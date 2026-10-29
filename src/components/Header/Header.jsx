@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BrandName from "../BrandName/BrandName";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { Link } from "react-scroll";
 import styles from "./Header.module.css";
@@ -77,7 +78,7 @@ const Header = ({ profile }) => {
               </span>
             )}
             <h1 className="text-5 text-white text-center mb-0 d-lg-block">
-              {profile.name}
+              <BrandName>{profile.name}</BrandName>
             </h1>
           </Link>
           <div

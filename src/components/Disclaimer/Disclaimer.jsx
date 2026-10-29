@@ -1,3 +1,4 @@
+import BrandName from "../BrandName/BrandName";
 import styles from "./Disclaimer.module.css";
 
 const Disclaimer = () => {
@@ -30,12 +31,12 @@ const Disclaimer = () => {
           </div>
           <div className="modal-body p-4">
             <p>
-              Copyright © 2026 Mahmud Hamda. The personal details, contact
+              Copyright © 2026 <BrandName>Mahmud Hamda</BrandName>. The personal details, contact
               information, and original writing on{" "}
               <a href="https://mahmudhamda.tech/" target="_blank" rel="noreferrer">
                 mahmudhamda.tech
               </a>{" "}
-              belong to Mahmud Hamda, Denver, Colorado. Please do not copy that
+              belong to <BrandName>Mahmud Hamda</BrandName>, Denver, Colorado. Please do not copy that
               material and present it as your own.
             </p>
             <ul className="lh-lg">
@@ -56,14 +57,14 @@ const Disclaimer = () => {
               </li>
               <li>
                 Links to other websites, including mahmudhamda.tech, leave this
-                page. Mahmud is not responsible for the content of those sites.
+                page. <BrandName>Mahmud</BrandName> is not responsible for the content of those sites.
               </li>
               <li>
-                Contact details are provided so you can reach Mahmud. Please do
+                Contact details are provided so you can reach <BrandName>Mahmud</BrandName>. Please do
                 not use them for spam or automated messages.
               </li>
               <li>
-                Mahmud may correct or update this notice. The current version is
+                <BrandName>Mahmud</BrandName> may correct or update this notice. The current version is
                 dated October 15, 2026.
               </li>
               <li>

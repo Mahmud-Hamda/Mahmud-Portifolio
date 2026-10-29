@@ -1,3 +1,4 @@
+import BrandName from "../../components/BrandName/BrandName";
 import styles from "./About.module.css";
 
 const about = {
@@ -52,7 +53,7 @@ const About = ({ profile }) => {
               <ul className="list-style-2">
                 <li>
                   <span className="fw-600 me-2">Name:</span>
-                  {profile.name}
+                  <BrandName>{profile.name}</BrandName>
                 </li>
                 <li>
                   <span className="fw-600 me-2">Email:</span>

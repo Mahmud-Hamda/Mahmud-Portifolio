@@ -1,0 +1,8 @@
+.brandName {
+  font-weight: 700;
+  background: linear-gradient(90deg, #3ad4ff 0%, #6a5cff 46%, #ff4ad8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

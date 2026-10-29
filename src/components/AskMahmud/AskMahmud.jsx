@@ -1,5 +1,6 @@
 import { ArrowUp, Bot, User } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
+import { Fragment, useEffect, useId, useRef, useState } from "react";
+import BrandName, { highlightName } from "../BrandName/BrandName";
 import {
   DECLINE,
   EMPTY_QUESTION,
@@ -15,10 +16,9 @@ import styles from "./AskMahmud.module.css";
 // Shortest time the thinking dots show, so a fast answer still reads as a reply
 const THINKING_DELAY_MS = 700;
 
-// "Ask Mahmud" uses the launcher star's gradient so the name reads as one brand
 const Disclaimer = ({ className }) => (
   <p className={className}>
-    <span className={styles.brandName}>Ask Mahmud</span> is AI and can make mistakes.
+    <BrandName>Ask Mahmud</BrandName> is AI and can make mistakes.
   </p>
 );
 
@@ -89,11 +89,13 @@ const sparklePaths = [0, 1, 2, 3, 4].map((k) => {
     .join("") + "Z";
 });
 
-// Answers may mark words as **bold**
-const renderText = (text) =>
-  text
-    .split(/\*\*(.+?)\*\*/g)
-    .map((part, index) => (index % 2 ? <strong key={index}>{part}</strong> : part));
+// Answers may mark words as **bold**. Mahmud's name is shown in the brand gradient,
+// except on the visitor's own purple bubbles, where the gradient would not be readable.
+const renderText = (text, { highlightNames = true } = {}) =>
+  text.split(/\*\*(.+?)\*\*/g).map((part, index) => {
+    const content = highlightNames ? highlightName(part) : part;
+    return index % 2 ? <strong key={index}>{content}</strong> : <Fragment key={index}>{content}</Fragment>;
+  });
 
 const AskMahmud = () => {
   const titleId = useId();
@@ -168,7 +170,7 @@ const AskMahmud = () => {
     if (action.href) {
       return (
         <a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
-          {action.label}
+          {highlightName(action.label)}
         </a>
       );
     }
@@ -178,7 +180,7 @@ const AskMahmud = () => {
         type="button"
         onClick={() => (action.ask ? ask(action.ask) : goTo(action.section))}
       >
-        {action.label}
+        {highlightName(action.label)}
       </button>
     );
   };
@@ -189,7 +191,9 @@ const AskMahmud = () => {
         <section className={styles.panel} role="dialog" aria-modal="false" aria-labelledby={titleId}>
           <header className={styles.header}>
             <div>
-              <h2 id={titleId} className={styles.title}>Ask Mahmud</h2>
+              <h2 id={titleId} className={styles.title}>
+                <BrandName>Ask Mahmud</BrandName>
+              </h2>
               <p className={styles.note}>Answers from this page.</p>
             </div>
             <button type="button" className={styles.close} onClick={() => setOpen(false)} aria-label="Close Ask Mahmud">
@@ -205,7 +209,7 @@ const AskMahmud = () => {
                     {isUser ? <User size={16} /> : <Bot size={16} />}
                   </span>
                   <div className={isUser ? styles.user : styles.assistant}>
-                    <p>{renderText(message.text)}</p>
+                    <p>{renderText(message.text, { highlightNames: !isUser })}</p>
                     {message.images?.map((image) => (
                       <a key={image.src} className={styles.diagram} href={image.src} target="_blank" rel="noreferrer">
                         <img src={image.src} alt={image.alt} />
@@ -249,14 +253,19 @@ const AskMahmud = () => {
             }}
           >
             <Disclaimer className={styles.disclaimer} />
-            <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask Mahmud</label>
+            <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask Mahmud Semantically</label>
             <div className={styles.inputBox}>
+              {/* Drawn instead of a native placeholder, which cannot show the name's gradient */}
+              {!draft && (
+                <span className={styles.inputHint} aria-hidden="true">
+                  {highlightName("Ask Mahmud Semantically")}
+                </span>
+              )}
               <input
                 id="ask-mahmud-input"
                 ref={inputRef}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
-                placeholder="Ask Mahmud Semantically"
                 maxLength={240}
               />
               {draft.trim() && (
@@ -289,9 +298,10 @@ const AskMahmud = () => {
             ))}
           </g>
         </svg>
-        <span>Ask Mahmud</span>
+        <span className={styles.launcherLabel}>
+          <BrandName>Ask Mahmud</BrandName>
+        </span>
       </button>
-      <Disclaimer className={styles.launcherNote} />
     </div>
   );
 };

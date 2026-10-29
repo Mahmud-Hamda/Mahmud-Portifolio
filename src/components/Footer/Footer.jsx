@@ -1,3 +1,4 @@
+import BrandName from "../BrandName/BrandName";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -8,7 +9,10 @@ const Footer = () => {
           <div className="col-lg-6">
             <p className="footer-copy mb-0">
               Copyright © {new Date().getFullYear()}{" "}
-              <span className="footer-name">Mahmud Hamda</span>. All rights reserved.
+              <span className="footer-name">
+                <BrandName>Mahmud Hamda</BrandName>
+              </span>
+              . All rights reserved.
             </p>
           </div>
           <div className="col-lg-6">
