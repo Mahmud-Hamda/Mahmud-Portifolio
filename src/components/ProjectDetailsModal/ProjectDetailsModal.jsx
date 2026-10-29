@@ -63,7 +63,11 @@ const ProjectDetailsModal = ({ projectDetails }) => {
       setPlaying(slideCount > 1 && !prefersReducedMotion());
       setTimerKey((key) => key + 1);
     };
-    const stop = () => setPlaying(false);
+    const stop = () => {
+      setPlaying(false);
+      setCurrent(0);
+      sliderRef.current?.slickGoTo(0, true);
+    };
 
     modal.addEventListener("shown.bs.modal", start);
     modal.addEventListener("hidden.bs.modal", stop);
@@ -72,6 +76,36 @@ const ProjectDetailsModal = ({ projectDetails }) => {
       modal.removeEventListener("hidden.bs.modal", stop);
     };
   }, [slideCount]);
+
+  useEffect(() => {
+    const modal = document.getElementById("exampleModal");
+    if (!modal) return undefined;
+
+    const collapse = () => {
+      if (!modal.classList.contains("show")) return;
+      modal.querySelector("[data-bs-dismiss='modal']")?.click();
+    };
+
+    const onPointerDown = (event) => {
+      if (!modal.classList.contains("show")) return;
+      const dialog = modal.querySelector(".modal-dialog");
+      if (dialog?.contains(event.target)) return;
+      collapse();
+    };
+
+    const onLeaveTab = () => {
+      if (document.visibilityState === "hidden") collapse();
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("visibilitychange", onLeaveTab);
+    window.addEventListener("blur", collapse);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("visibilitychange", onLeaveTab);
+      window.removeEventListener("blur", collapse);
+    };
+  }, []);
 
   useEffect(() => {
     if (!playing || slideCount < 2) return undefined;
