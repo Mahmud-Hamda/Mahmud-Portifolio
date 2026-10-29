@@ -258,6 +258,7 @@ const AskMahmud = () => {
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState([welcome]);
   const [isThinking, setIsThinking] = useState(false);
+  const dockRef = useRef(null);
   const listRef = useRef(null);
   const inputRef = useRef(null);
   const replyTimerRef = useRef(null);
@@ -269,10 +270,18 @@ const AskMahmud = () => {
     const onKey = (event) => {
       if (event.key === "Escape") setOpen(false);
     };
+    // Collapse when the visitor clicks, taps, or tabs anywhere outside the panel and launcher
+    const onOutside = (event) => {
+      if (!dockRef.current?.contains(event.target)) setOpen(false);
+    };
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onOutside);
+    document.addEventListener("focusin", onOutside);
     const focusTimer = window.setTimeout(() => inputRef.current?.focus(), 50);
     return () => {
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onOutside);
+      document.removeEventListener("focusin", onOutside);
       window.clearTimeout(focusTimer);
     };
   }, [open]);
@@ -307,7 +316,7 @@ const AskMahmud = () => {
   };
 
   return (
-    <div className={styles.dock}>
+    <div className={styles.dock} ref={dockRef}>
       {open && (
         <section className={styles.panel} role="dialog" aria-modal="false" aria-labelledby={titleId}>
           <header className={styles.header}>
@@ -378,17 +387,21 @@ const AskMahmud = () => {
             }}
           >
             <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask Mahmud</label>
-            <input
-              id="ask-mahmud-input"
-              ref={inputRef}
-              value={draft}
-              onChange={(event) => setDraft(event.target.value)}
-              placeholder="Ask Mahmud"
-              maxLength={240}
-            />
-            <button type="submit" className={styles.sendButton} disabled={!canSend} aria-label="Send">
-              <ArrowUp size={18} />
-            </button>
+            <div className={styles.inputBox}>
+              <input
+                id="ask-mahmud-input"
+                ref={inputRef}
+                value={draft}
+                onChange={(event) => setDraft(event.target.value)}
+                placeholder="Ask Mahmud"
+                maxLength={240}
+              />
+              {draft.trim() && (
+                <button type="submit" className={styles.sendButton} disabled={!canSend} aria-label="Send">
+                  <ArrowUp size={16} />
+                </button>
+              )}
+            </div>
           </form>
         </section>
       )}
