@@ -119,9 +119,41 @@
   overflow: auto;
 }
 
+.assistantRow,
+.userRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.userRow {
+  flex-direction: row-reverse;
+}
+
+.assistantAvatar,
+.userAvatar {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.assistantAvatar {
+  background: #10a37f;
+}
+
+.userAvatar {
+  background: var(--button);
+  color: var(--button-ink);
+}
+
 .assistant,
 .user {
-  max-width: 92%;
+  max-width: calc(100% - 36px);
   padding: 10px 12px;
   border-radius: 12px;
   font-size: 14px;
@@ -129,14 +161,56 @@
 }
 
 .assistant {
-  align-self: flex-start;
   background: #f4f4f6;
 }
 
 .user {
-  align-self: flex-end;
   background: var(--button);
   color: var(--button-ink);
+}
+
+.thinking {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 4px;
+}
+
+.thinkingDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8e8e93;
+  animation: thinking-pulse 1.5s infinite ease-in-out;
+}
+
+.thinkingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.thinkingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes thinking-pulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thinkingDot {
+    animation: none;
+    opacity: 0.8;
+  }
 }
 
 .assistant p,
@@ -198,18 +272,28 @@
   color: #121212;
 }
 
-.form button {
+.sendButton {
+  width: 42px;
   height: 42px;
-  padding: 0 14px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
-  border-radius: 10px;
+  border-radius: 50%;
   background: var(--button);
   color: var(--button-ink);
-  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
-.form button:disabled {
-  opacity: 0.45;
+.sendButton:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.sendButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .srOnly {

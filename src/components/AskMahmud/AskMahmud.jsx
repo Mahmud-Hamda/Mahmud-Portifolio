@@ -1,5 +1,9 @@
+import { ArrowUp, Bot, User } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import styles from "./AskMahmud.module.css";
+
+// Short pause so the reply reads as an answer rather than appearing instantly
+const THINKING_DELAY_MS = 700;
 
 const prompts = [
   "What do you do?",
@@ -253,8 +257,12 @@ const AskMahmud = () => {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState([welcome]);
+  const [isThinking, setIsThinking] = useState(false);
   const listRef = useRef(null);
   const inputRef = useRef(null);
+  const replyTimerRef = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(replyTimerRef.current), []);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -272,19 +280,25 @@ const AskMahmud = () => {
   useEffect(() => {
     const list = listRef.current;
     if (list) list.scrollTop = list.scrollHeight;
-  }, [messages, open]);
+  }, [messages, open, isThinking]);
 
   const ask = (text) => {
     const trimmed = text.trim();
-    if (!trimmed) return;
+    if (!trimmed || isThinking) return;
     const answer = replyTo(trimmed);
-    setMessages((current) => [
-      ...current,
-      { role: "user", text: trimmed },
-      { role: "assistant", text: answer.text, actions: answer.actions },
-    ]);
+    setMessages((current) => [...current, { role: "user", text: trimmed }]);
     setDraft("");
+    setIsThinking(true);
+    replyTimerRef.current = window.setTimeout(() => {
+      setMessages((current) => [
+        ...current,
+        { role: "assistant", text: answer.text, actions: answer.actions },
+      ]);
+      setIsThinking(false);
+    }, THINKING_DELAY_MS);
   };
+
+  const canSend = Boolean(draft.trim()) && !isThinking;
 
   const goTo = (section) => {
     setOpen(false);
@@ -306,26 +320,46 @@ const AskMahmud = () => {
             </button>
           </header>
           <div className={styles.messages} ref={listRef}>
-            {messages.map((message, index) => (
-              <div key={`${message.role}-${index}`} className={message.role === "user" ? styles.user : styles.assistant}>
-                <p>{renderText(message.text)}</p>
-                {message.actions && (
-                  <div className={styles.actions}>
-                    {message.actions.map((action) =>
-                      action.href ? (
-                        <a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
-                          {action.label}
-                        </a>
-                      ) : (
-                        <button key={action.label} type="button" onClick={() => goTo(action.section)}>
-                          {action.label}
-                        </button>
-                      )
+            {messages.map((message, index) => {
+              const isUser = message.role === "user";
+              return (
+                <div key={`${message.role}-${index}`} className={isUser ? styles.userRow : styles.assistantRow}>
+                  <span className={isUser ? styles.userAvatar : styles.assistantAvatar} aria-hidden="true">
+                    {isUser ? <User size={16} /> : <Bot size={16} />}
+                  </span>
+                  <div className={isUser ? styles.user : styles.assistant}>
+                    <p>{renderText(message.text)}</p>
+                    {message.actions && (
+                      <div className={styles.actions}>
+                        {message.actions.map((action) =>
+                          action.href ? (
+                            <a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                              {action.label}
+                            </a>
+                          ) : (
+                            <button key={action.label} type="button" onClick={() => goTo(action.section)}>
+                              {action.label}
+                            </button>
+                          )
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
+                </div>
+              );
+            })}
+            {isThinking && (
+              <div className={styles.assistantRow} role="status" aria-label="Ask Mahmud is thinking">
+                <span className={styles.assistantAvatar} aria-hidden="true">
+                  <Bot size={16} />
+                </span>
+                <div className={styles.thinking}>
+                  <span className={styles.thinkingDot} />
+                  <span className={styles.thinkingDot} />
+                  <span className={styles.thinkingDot} />
+                </div>
               </div>
-            ))}
+            )}
           </div>
           {messages.length === 1 && (
             <div className={styles.prompts}>
@@ -349,10 +383,12 @@ const AskMahmud = () => {
               ref={inputRef}
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
-              placeholder="Ask a question"
+              placeholder="Ask Mahmud"
               maxLength={240}
             />
-            <button type="submit" disabled={!draft.trim()}>Send</button>
+            <button type="submit" className={styles.sendButton} disabled={!canSend} aria-label="Send">
+              <ArrowUp size={18} />
+            </button>
           </form>
         </section>
       )}
