@@ -18,6 +18,11 @@ const contactActions = [
   { label: "Email", href: "mailto:mkhamda3@gmail.com" },
 ];
 
+const gptCloneActions = [
+  { label: "Open the live site", href: "https://gpt-clone-tau-sable.vercel.app/" },
+  { label: "View the code", href: "https://github.com/Mahmud-Hamda/gpt-clone-app" },
+];
+
 const replyTo = (raw) => {
   const q = raw
     .toLowerCase()
@@ -35,17 +40,45 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/gpt|chatgpt|chatbot|gemini|assistant app|ai chat/.test(q)) {
+  if (/gpt|chat ?bot|gemini|llm|ai chat|chat app|ai assistant/.test(q)) {
+    if (/privat|\bdata\b|history|session|account|login|see my|other people|secure/.test(q)) {
+      return {
+        text: "Each visitor of the GPT Clone gets an anonymous session id stored in their own browser, so they only see their own chat history. There are no accounts, and nothing identifies the visitor. It is a demo, so do not share anything sensitive in it.",
+        actions: gptCloneActions,
+      };
+    }
+
+    if (/\blimits?\b|\brate\b|quota|abuse|\bcosts?\b|spam|how many/.test(q)) {
+      return {
+        text: "The GPT Clone limits each visitor to 5 questions a minute and 50 a day, and each question to 2,000 characters. That keeps the Gemini usage of the public demo under control.",
+        actions: gptCloneActions,
+      };
+    }
+
+    if (/stack|built|build|tech|work|architect|backend|frontend|database|\bapi\b|deploy|how/.test(q)) {
+      return {
+        text: "The GPT Clone has a React and Vite frontend and a Node and Express API, both on Vercel. The API sends each question, with the visitor's recent messages as context, to Google Gemini, and saves both sides of the chat in MySQL on TiDB Cloud. A system prompt keeps the answers to full-stack web development.",
+        actions: [...gptCloneActions, { label: "See the card", section: "portfolio" }],
+      };
+    }
+
     return {
-      text: "The GPT Clone is a ChatGPT-style assistant Mahmud built with React, Express, Google Gemini, and MySQL. It answers full-stack web development questions, keeps the chat history, and is live on Vercel.",
+      text: "The GPT Clone is a ChatGPT-style assistant Mahmud built with React, Express, Google Gemini, and MySQL. It answers full-stack web development questions, politely declines off-topic ones, follows up using the recent conversation, renders code in Markdown, and keeps each visitor's chat history private to their browser. It is live on Vercel.",
+      actions: gptCloneActions,
+    };
+  }
+
+  if (/\bclones?\b/.test(q) && !/netflix|tmdb|movie/.test(q)) {
+    return {
+      text: "Mahmud has two clone projects, both live on Vercel: a Netflix Clone, a movie and TV browser built with React and the TMDB API, and a GPT Clone, a ChatGPT-style web development assistant built with React, Express, Google Gemini, and MySQL.",
       actions: [
-        { label: "Open the live site", href: "https://gpt-clone-tau-sable.vercel.app/" },
-        { label: "View the code", href: "https://github.com/Mahmud-Hamda/gpt-clone-app" },
+        { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
+        { label: "Open the GPT Clone", href: gptCloneActions[0].href },
       ],
     };
   }
 
-  if (/netflix|clone|tmdb|movie/.test(q)) {
+  if (/netflix|tmdb|movie/.test(q)) {
     return {
       text: "The Netflix Clone is a movie and TV browser Mahmud built with React and the TMDB API. It has search, trailers, accounts, and a saved My List, and it is live on Vercel.",
       actions: [
@@ -61,7 +94,7 @@ const replyTo = (raw) => {
       actions: [
         { label: "See My Work", section: "portfolio" },
         { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
-        { label: "Open the GPT Clone", href: "https://gpt-clone-tau-sable.vercel.app/" },
+        { label: "Open the GPT Clone", href: gptCloneActions[0].href },
       ],
     };
   }
@@ -158,8 +191,11 @@ const replyTo = (raw) => {
 
   if (/full[- ]?stack|web dev|website|ai|chatbot|rag|react|node/.test(q)) {
     return {
-      text: "Mahmud builds AI-powered full-stack web applications with React, Node and Express, MySQL, and REST APIs. That includes chatbots, semantic search, and retrieval-augmented generation when a project needs them.",
-      actions: [{ label: "See AI-powered full-stack", section: "services" }],
+      text: "Mahmud builds AI-powered full-stack web applications with React, Node and Express, MySQL, and REST APIs. That includes chatbots, semantic search, and retrieval-augmented generation when a project needs them. His GPT Clone, a web development assistant on Google Gemini, is a live example.",
+      actions: [
+        { label: "See AI-powered full-stack", section: "services" },
+        { label: "Open the GPT Clone", href: gptCloneActions[0].href },
+      ],
     };
   }
 
