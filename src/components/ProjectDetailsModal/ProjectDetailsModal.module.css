@@ -2,6 +2,56 @@
   box-sizing: border-box;
 }
 
+.root .slick-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.root .slick-dots li {
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.root .slick-dots li button {
+  width: 28px;
+  height: 28px;
+}
+
+.root .slick-dots li button:before {
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  margin-top: -4px;
+  border-radius: 999px;
+  background-color: #c8c8ce;
+  opacity: 1;
+  transition: width 0.25s ease, margin-left 0.25s ease, background-color 0.25s ease;
+}
+
+.root .slick-dots li.slick-active button {
+  width: 36px;
+}
+
+.root .slick-dots li.slick-active button:before,
+.root .slick-dots li.slick-active button:hover:before,
+.root .slick-dots li.slick-active button:focus-visible:before {
+  width: 22px;
+  height: 8px;
+  margin-left: -11px;
+  border-radius: 999px;
+  background-color: #2c2c30;
+  opacity: 1;
+}
+
+.root .slick-dots li:not(.slick-active) button:hover:before,
+.root .slick-dots li:not(.slick-active) button:focus-visible:before {
+  background-color: #a3a3a8;
+}
+
 .title,
 .note {
   overflow-wrap: anywhere;
@@ -125,4 +175,10 @@
   margin: 0;
   color: #66666d;
   font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root .slick-dots li button:before {
+    transition: none;
+  }
 }
