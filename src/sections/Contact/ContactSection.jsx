@@ -26,7 +26,7 @@ const sendTimeoutMs = 20000;
 const intents = new Set([
   "I'm hiring",
   "I have a project",
-  "I have Suggestion(s)",
+  "I have a suggestion/question",
   "Other",
 ]);
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u;
@@ -381,7 +381,7 @@ const ContactSection = ({ profile }) => {
                     </option>
                     <option value="I'm hiring">I'm hiring</option>
                     <option value="I have a project">I have a project</option>
-                    <option value="I have Suggestion(s)">I have Suggestion(s)</option>
+                    <option value="I have a suggestion/question">I have a suggestion/question</option>
                     <option value="Other">Other</option>
                   </select>
                   {errors.intent ? (
