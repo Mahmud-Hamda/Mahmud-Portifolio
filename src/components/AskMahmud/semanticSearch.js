@@ -1,5 +1,8 @@
 import { KNOWLEDGE } from "./knowledge";
 
+// Loaded at runtime from the CDN at a pinned version rather than bundled, which
+// keeps the library and its 27 MB ONNX runtime out of the published site files.
+const TRANSFORMERS_URL = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/dist/transformers.min.js";
 const MODEL_ID = "Xenova/all-MiniLM-L6-v2";
 
 // Cosine similarity cut-offs for all-MiniLM-L6-v2, tuned against real questions.
@@ -29,7 +32,7 @@ const similarity = (a, b) => a.reduce((sum, value, index) => sum + value * b[ind
 export const loadSearchIndex = () => {
   if (!indexPromise) {
     indexPromise = (async () => {
-      const { pipeline } = await import("@huggingface/transformers");
+      const { pipeline } = await import(/* @vite-ignore */ TRANSFORMERS_URL);
       const extractor = await pipeline("feature-extraction", MODEL_ID, { dtype: "q8" });
       const examples = KNOWLEDGE.flatMap((entry) => entry.examples.map((text) => ({ entry, text })));
       const vectors = await embed(extractor, examples.map((example) => example.text));
