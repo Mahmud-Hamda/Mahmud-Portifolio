@@ -1,5 +1,7 @@
 import { ArrowUp, Bot, User } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-architecture.jpg";
+import netflixCloneArchitecture from "../../assets/images/projects/netflix-clone-architecture.jpg";
 import styles from "./AskMahmud.module.css";
 
 // Short pause so the reply reads as an answer rather than appearing instantly
@@ -27,6 +29,16 @@ const gptCloneActions = [
   { label: "View the code", href: "https://github.com/Mahmud-Hamda/gpt-clone-app" },
 ];
 
+const netflixCloneActions = [
+  { label: "Open the live site", href: "https://netflix-clone-yscv.vercel.app/" },
+  { label: "View the code", href: "https://github.com/Mahmud-Hamda/Netflix-Clone" },
+];
+
+const GPT_CLONE_DIAGRAM = { src: gptCloneArchitecture, alt: "GPT Clone architecture diagram" };
+const NETFLIX_CLONE_DIAGRAM = { src: netflixCloneArchitecture, alt: "Netflix Clone architecture diagram" };
+
+// Every rule below anchors its words with \b, so a word hidden inside another
+// never triggers it ("show" must not match "how", "research" must not match "reach").
 const replyTo = (raw) => {
   const q = raw
     .toLowerCase()
@@ -44,22 +56,46 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/gpt|chat ?bot|gemini|llm|ai chat|chat app|ai assistant/.test(q)) {
-    if (/privat|\bdata\b|history|session|account|login|see my|other people|secure/.test(q)) {
+  const isAboutGptClone = /\b(gpt|chat ?bots?|gemini|llm|ai chat|chat app|ai assistant)/.test(q);
+  const isAboutNetflixClone = /\b(netflix|tmdb|movies?)\b/.test(q);
+
+  if (/\b(diagrams?|architecture|flow ?charts?|charts?|visual|pictures?|images?|draw)/.test(q)) {
+    if (isAboutGptClone && !isAboutNetflixClone) {
+      return {
+        text: "Here is the GPT Clone architecture diagram. Select it to open it full size.",
+        images: [GPT_CLONE_DIAGRAM],
+        actions: gptCloneActions,
+      };
+    }
+    if (isAboutNetflixClone && !isAboutGptClone) {
+      return {
+        text: "Here is the Netflix Clone architecture diagram. Select it to open it full size.",
+        images: [NETFLIX_CLONE_DIAGRAM],
+        actions: netflixCloneActions,
+      };
+    }
+    return {
+      text: "Here are the architecture diagrams of both projects: the GPT Clone first, then the Netflix Clone. Select one to open it full size.",
+      images: [GPT_CLONE_DIAGRAM, NETFLIX_CLONE_DIAGRAM],
+    };
+  }
+
+  if (isAboutGptClone) {
+    if (/\b(privat|data\b|history|session|accounts?\b|log ?in|see my|other people|secure)/.test(q)) {
       return {
         text: "Each visitor of the GPT Clone gets an anonymous session id stored in their own browser, so they only see their own chat history. There are no accounts, and nothing identifies the visitor. It is a demo, so do not share anything sensitive in it.",
         actions: gptCloneActions,
       };
     }
 
-    if (/\blimits?\b|\brate\b|quota|abuse|\bcosts?\b|spam|how many/.test(q)) {
+    if (/\b(limits?\b|rate\b|rate limit|quota|abuse|costs?\b|spam|how many)/.test(q)) {
       return {
         text: "The GPT Clone limits each visitor to 5 questions a minute and 50 a day, and each question to 2,000 characters. That keeps the Gemini usage of the public demo under control.",
         actions: gptCloneActions,
       };
     }
 
-    if (/stack|built|build|tech|work|architect|backend|frontend|database|\bapi\b|deploy|how/.test(q)) {
+    if (/\b(stack|built|build|tech|works?\b|backend|frontend|database|api\b|deploy|how\b)/.test(q)) {
       return {
         text: "The GPT Clone has a React and Vite frontend and a Node and Express API, both on Vercel. The API sends each question, with the visitor's recent messages as context, to Google Gemini, and saves both sides of the chat in MySQL on TiDB Cloud. A system prompt keeps the answers to full-stack web development.",
         actions: [...gptCloneActions, { label: "See the card", section: "portfolio" }],
@@ -72,7 +108,7 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/\bclones?\b/.test(q) && !/netflix|tmdb|movie/.test(q)) {
+  if (/\bclones?\b/.test(q) && !isAboutNetflixClone) {
     return {
       text: "Mahmud has two clone projects, both live on Vercel: a Netflix Clone, a movie and TV browser built with React and the TMDB API, and a GPT Clone, a ChatGPT-style web development assistant built with React, Express, Google Gemini, and MySQL.",
       actions: [
@@ -82,17 +118,14 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/netflix|tmdb|movie/.test(q)) {
+  if (isAboutNetflixClone) {
     return {
       text: "The Netflix Clone is a movie and TV browser Mahmud built with React and the TMDB API. It has search, trailers, accounts, and a saved My List, and it is live on Vercel.",
-      actions: [
-        { label: "Open the live site", href: "https://netflix-clone-yscv.vercel.app/" },
-        { label: "View the code", href: "https://github.com/Mahmud-Hamda/Netflix-Clone" },
-      ],
+      actions: netflixCloneActions,
     };
   }
 
-  if (/project|portfolio|client|case stud/.test(q)) {
+  if (/\b(projects?|portfolio|clients?|case stud)/.test(q)) {
     return {
       text: "The first two cards under My Work are real projects, both live on Vercel: a Netflix Clone built with React and the TMDB API, and a GPT Clone built with React, Express, Google Gemini, and MySQL. The other cards are layout samples, not completed client projects.",
       actions: [
@@ -103,20 +136,20 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/testimonial|review|quote|client speak/.test(q)) {
+  if (/\b(testimonial|reviews?\b|quotes?\b|client speak)/.test(q)) {
     return {
       text: "The quotes under Client Speak are sample quotes for the layout. They are not client feedback.",
     };
   }
 
-  if (/whatsapp/.test(q)) {
+  if (/\bwhatsapp/.test(q)) {
     return {
       text: "WhatsApp is the fastest way to message Mahmud at +1 720 365 1849.",
       actions: [{ label: "Open WhatsApp", href: "https://wa.me/17203651849" }],
     };
   }
 
-  if (/email|e-mail|gmail/.test(q)) {
+  if (/\b(e ?mail|gmail)/.test(q)) {
     return {
       text: "Email Mahmud at mkhamda3@gmail.com, or send a note through the contact form.",
       actions: [
@@ -126,74 +159,74 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/phone|call|number/.test(q)) {
+  if (/\b(phone|call\b|number)/.test(q)) {
     return {
       text: "Mahmud's phone number is +1 720 365 1849.",
       actions: [{ label: "Call", href: "tel:+17203651849" }],
     };
   }
 
-  if (/linkedin/.test(q)) {
+  if (/\blinked ?in/.test(q)) {
     return {
       text: "Mahmud's LinkedIn profile is linked from the contact section.",
       actions: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/mahmud-hamda" }],
     };
   }
 
-  if (/github/.test(q)) {
+  if (/\bgit ?hub/.test(q)) {
     return {
       text: "Mahmud's GitHub profile is linked from the contact section.",
       actions: [{ label: "GitHub", href: "https://github.com/Mahmud-Hamda" }],
     };
   }
 
-  if (/reach|contact|get in touch|message you|hire|hiring|role|job|available|open to|recruit|opportunity|freelance|project with you/.test(q)) {
+  if (/\b(reach\b|contact|get in touch|message you|hire\b|hiring|roles?\b|jobs?\b|available|open to|recruit|opportunit|freelanc|project with you)/.test(q)) {
     return {
       text: "Mahmud is open to a conversation about a role or a project. Send a note and say whether you are hiring or you have a project.",
       actions: contactActions,
     };
   }
 
-  if (/where|location|denver|colorado|based|live|from/.test(q)) {
+  if (/\b(where\b|location|denver|colorado|based in|live\b|lives\b|living in|come from|where from|from where)/.test(q)) {
     return { text: "Mahmud is based in Denver, Colorado." };
   }
 
-  if (/education|degree|university|school|certif|comptia|coursera|evangadi/.test(q)) {
+  if (/\b(education|degree|universit|school|certif|comptia|coursera|evangadi)/.test(q)) {
     return {
       text: "Mahmud earned a B.S. in Biomedical Engineering, Instrumentation and Medical Imaging, from Addis Ababa University (2011–2016). He holds CompTIA Security+ ce (2024–2025), plus coursework in cybersecurity in healthcare, medical software, and AI-powered full-stack development.",
       actions: [{ label: "See Resume", section: "resume" }],
     };
   }
 
-  if (/experience|worked|job history|employment|hospital|shaggar|chancho/.test(q)) {
+  if (/\b(experience|worked|work history|job history|employ|hospital|shaggar|chancho)/.test(q)) {
     return {
       text: "Mahmud was a Junior Biomedical Engineer at Chancho Hospital (2016–2017) and a Senior Biomedical Engineer at Shaggar HO (2017–2023). His cybersecurity study ran through 2024–2025, and his AI-powered full-stack work is self-paced in 2026.",
       actions: [{ label: "See Resume", section: "resume" }],
     };
   }
 
-  if (/skill|stack|react|node|mysql|html|css|javascript|bash/.test(q)) {
+  if (/\b(skill|stack|react\b|node|mysql|html|css|javascript|bash)/.test(q)) {
     return {
       text: "His skills are grouped as medical devices, cybersecurity and Bash, and the web stack: HTML, CSS, Bootstrap, JavaScript, React with Vite, Node and Express, MySQL, REST APIs, Git, and AI API integration.",
       actions: [{ label: "See My Skills", section: "resume" }],
     };
   }
 
-  if (/cyber|security\+|threat|cryptograph/.test(q)) {
+  if (/\b(cyber|security|threat|cryptograph)/.test(q)) {
     return {
       text: "Mahmud is a Certified Cybersecurity Professional with CompTIA Security+. He works on access control, cryptography, threat detection, and network security, including security for medical and web systems.",
       actions: [{ label: "See Cybersecurity", section: "services" }],
     };
   }
 
-  if (/biomed|medical|hospital|device|imaging|equipment/.test(q)) {
+  if (/\b(biomed|medical|hospital|devices?\b|imaging|equipment)/.test(q)) {
     return {
       text: "Mahmud is a Senior Biomedical Engineer. His hospital work covers installation, calibration, preventive maintenance, and troubleshooting of medical equipment, including imaging and life-support systems.",
       actions: [{ label: "See Biomedical engineering", section: "services" }],
     };
   }
 
-  if (/full[- ]?stack|web dev|website|ai|chatbot|rag|react|node/.test(q)) {
+  if (/\b(full ?stack|web dev|websites?\b|ai\b|artificial intelligence|rag\b|react\b|node)/.test(q)) {
     return {
       text: "Mahmud builds AI-powered full-stack web applications with React, Node and Express, MySQL, and REST APIs. That includes chatbots, semantic search, and retrieval-augmented generation when a project needs them. His GPT Clone, a web development assistant on Google Gemini, is a live example.",
       actions: [
@@ -203,14 +236,14 @@ const replyTo = (raw) => {
     };
   }
 
-  if (/what do you do|who are you|who is|about|service|background|mahmud/.test(q)) {
+  if (/\b(what do you do|who are you|who is|about\b|services?\b|background|mahmud)/.test(q)) {
     return {
       text: "Mahmud Hamda is a Senior Biomedical Engineer and Certified Cybersecurity Professional who builds AI-powered full-stack web applications. He is based in Denver, Colorado.",
       actions: [{ label: "See What I Do", section: "services" }],
     };
   }
 
-  if (/resume|cv/.test(q)) {
+  if (/\b(resume|cv\b|curriculum)/.test(q)) {
     return {
       text: "The resume is on this page. You can download it from the Resume section as Mahmud-Hamda-Resume.pdf.",
       actions: [{ label: "Go to Resume", section: "resume" }],
@@ -301,7 +334,7 @@ const AskMahmud = () => {
     replyTimerRef.current = window.setTimeout(() => {
       setMessages((current) => [
         ...current,
-        { role: "assistant", text: answer.text, actions: answer.actions },
+        { role: "assistant", text: answer.text, images: answer.images, actions: answer.actions },
       ]);
       setIsThinking(false);
     }, THINKING_DELAY_MS);
@@ -338,6 +371,11 @@ const AskMahmud = () => {
                   </span>
                   <div className={isUser ? styles.user : styles.assistant}>
                     <p>{renderText(message.text)}</p>
+                    {message.images?.map((image) => (
+                      <a key={image.src} className={styles.diagram} href={image.src} target="_blank" rel="noreferrer">
+                        <img src={image.src} alt={image.alt} />
+                      </a>
+                    ))}
                     {message.actions && (
                       <div className={styles.actions}>
                         {message.actions.map((action) =>

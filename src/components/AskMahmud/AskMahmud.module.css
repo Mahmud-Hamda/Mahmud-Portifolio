@@ -218,6 +218,26 @@
   margin: 0;
 }
 
+.diagram {
+  display: block;
+  margin-top: 10px;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.diagram:hover,
+.diagram:focus-visible {
+  border-color: var(--primary);
+}
+
+.diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
