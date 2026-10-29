@@ -2,54 +2,87 @@
   box-sizing: border-box;
 }
 
-.root .slick-dots {
-  display: flex !important;
-  justify-content: center;
+.slideBar {
+  display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 14px;
+  min-height: 36px;
 }
 
-.root .slick-dots li {
-  width: auto;
-  height: auto;
-  margin: 0;
+.slideButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #d2d2d7;
+  border-radius: 50%;
+  background: #fff;
+  color: #1d1d1f;
+  cursor: pointer;
 }
 
-.root .slick-dots li button {
-  width: 28px;
+.slideButton:hover {
+  background: #f5f5f7;
+}
+
+.slideButton:focus-visible,
+.slideDot:focus-visible {
+  outline: 2px solid #06c;
+  outline-offset: 2px;
+}
+
+.slideNext {
+  margin-left: auto;
+}
+
+.slideIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.slideDots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.slideDot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
   height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
-.root .slick-dots li button:before {
+.slideDot::before {
+  content: "";
   width: 8px;
   height: 8px;
-  margin-left: -4px;
-  margin-top: -4px;
   border-radius: 999px;
-  background-color: #c8c8ce;
-  opacity: 1;
-  transition: width 0.25s ease, margin-left 0.25s ease, background-color 0.25s ease;
+  background: #c8c8ce;
+  transition: width 0.25s ease, background-color 0.25s ease;
 }
 
-.root .slick-dots li.slick-active button {
+.slideDot:hover::before {
+  background: #a3a3a8;
+}
+
+.slideDotOn {
   width: 36px;
 }
 
-.root .slick-dots li.slick-active button:before,
-.root .slick-dots li.slick-active button:hover:before,
-.root .slick-dots li.slick-active button:focus-visible:before {
+.slideDotOn::before,
+.slideDotOn:hover::before {
   width: 22px;
-  height: 8px;
-  margin-left: -11px;
-  border-radius: 999px;
-  background-color: #2c2c30;
-  opacity: 1;
-}
-
-.root .slick-dots li:not(.slick-active) button:hover:before,
-.root .slick-dots li:not(.slick-active) button:focus-visible:before {
-  background-color: #a3a3a8;
+  background: #2c2c30;
 }
 
 .title,
@@ -178,7 +211,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .root .slick-dots li button:before {
+  .slideDot::before {
     transition: none;
   }
 }
