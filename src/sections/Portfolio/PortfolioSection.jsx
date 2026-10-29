@@ -3,7 +3,6 @@ import Isotope from "isotope-layout";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProjectDetailsModal from "../../components/ProjectDetailsModal/ProjectDetailsModal";
 import project1 from "../../assets/images/projects/project-1.jpg";
-import project2 from "../../assets/images/projects/project-2.jpg";
 import project3 from "../../assets/images/projects/project-3.jpg";
 import project4 from "../../assets/images/projects/project-4.jpg";
 import project5 from "../../assets/images/projects/project-5.jpg";
@@ -12,6 +11,9 @@ import project7 from "../../assets/images/projects/project-7.jpg";
 import netflixCover from "../../assets/images/projects/netflix-clone-cover.jpg";
 import netflixHome from "../../assets/images/projects/netflix-clone-home.jpg";
 import netflixRows from "../../assets/images/projects/netflix-clone-rows.jpg";
+import gptCloneCover from "../../assets/images/projects/gpt-clone-cover.jpg";
+import gptCloneChat from "../../assets/images/projects/gpt-clone-chat.jpg";
+import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-architecture.jpg";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -41,7 +43,26 @@ const projects = [
     ],
     note: "Student project. Not affiliated with Netflix.",
   },
-  { title: "Project Title 2", thumbImage: project2, sliderImages: [project2, project5], categories: ["Cybersecurity"] },
+  {
+    title: "GPT Clone",
+    thumbImage: gptCloneCover,
+    sliderImages: [gptCloneChat, gptCloneArchitecture],
+    categories: ["AI-powered-full-stack"],
+    summary: "A ChatGPT-style assistant that answers full-stack web development questions and keeps the chat history.",
+    stack: ["React 19", "Express 5", "Google Gemini", "MySQL (TiDB Cloud)", "Vite", "Vercel"],
+    liveUrl: "https://gpt-clone-tau-sable.vercel.app/",
+    repoUrl: "https://github.com/Mahmud-Hamda/gpt-clone-app",
+    description:
+      "I built a ChatGPT-style chat app focused on full-stack web development. The React frontend calls an Express API, which sends the question and recent messages to Google Gemini and saves both sides of the conversation in a cloud MySQL database.",
+    features: [
+      "Answers questions about frontend, backend, databases, APIs, and deployment",
+      "Politely declines questions outside web development",
+      "Sends recent messages as context, so follow-up questions work",
+      "Renders answers as Markdown, including code blocks",
+      "Keeps the chat history in MySQL on TiDB Cloud",
+    ],
+    note: "Student project. Not affiliated with OpenAI.",
+  },
   { title: "Project Title 3", thumbImage: project3, sliderImages: [project3, project5], categories: ["AI-powered-full-stack"] },
   { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },
   { title: "Project Title 5", thumbImage: project5, sliderImages: [project1, project5], categories: ["Cybersecurity"] },

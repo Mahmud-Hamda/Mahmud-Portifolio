@@ -35,6 +35,16 @@ const replyTo = (raw) => {
     };
   }
 
+  if (/gpt|chatgpt|chatbot|gemini|assistant app|ai chat/.test(q)) {
+    return {
+      text: "The GPT Clone is a ChatGPT-style assistant Mahmud built with React, Express, Google Gemini, and MySQL. It answers full-stack web development questions, keeps the chat history, and is live on Vercel.",
+      actions: [
+        { label: "Open the live site", href: "https://gpt-clone-tau-sable.vercel.app/" },
+        { label: "View the code", href: "https://github.com/Mahmud-Hamda/gpt-clone-app" },
+      ],
+    };
+  }
+
   if (/netflix|clone|tmdb|movie/.test(q)) {
     return {
       text: "The Netflix Clone is a movie and TV browser Mahmud built with React and the TMDB API. It has search, trailers, accounts, and a saved My List, and it is live on Vercel.",
@@ -47,10 +57,11 @@ const replyTo = (raw) => {
 
   if (/project|portfolio|client|case stud/.test(q)) {
     return {
-      text: "The first card under My Work is a real project: a Netflix Clone built with React and the TMDB API, live on Vercel. The other cards are layout samples, not completed client projects.",
+      text: "The first two cards under My Work are real projects, both live on Vercel: a Netflix Clone built with React and the TMDB API, and a GPT Clone built with React, Express, Google Gemini, and MySQL. The other cards are layout samples, not completed client projects.",
       actions: [
         { label: "See My Work", section: "portfolio" },
         { label: "Open the Netflix Clone", href: "https://netflix-clone-yscv.vercel.app/" },
+        { label: "Open the GPT Clone", href: "https://gpt-clone-tau-sable.vercel.app/" },
       ],
     };
   }
