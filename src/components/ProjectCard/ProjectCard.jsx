@@ -75,6 +75,13 @@ const ProjectCard = ({ project, onImageLoad, onSelect }) => {
       {isLive && (
         <div className={styles.projectBody}>
           <h3 className={styles.projectName}>{project.title}</h3>
+          {project.categories.length > 1 && (
+            <p className={styles.fit}>
+              {project.categories
+                .map((category) => categoryLabels[category] ?? category)
+                .join(" · ")}
+            </p>
+          )}
           <p className={styles.projectSummary}>{project.summary}</p>
           <ul className={styles.stackList} aria-label="Built with">
             {project.stack.map((item) => (
