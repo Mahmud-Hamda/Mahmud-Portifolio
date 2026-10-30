@@ -8,7 +8,7 @@ import netflixArchitecture from "../../assets/images/projects/netflix-clone-arch
 import gptThumb from "../../assets/images/projects/gpt-clone-thumb.png";
 import gptCloneChat from "../../assets/images/projects/gpt-clone-chat.jpg";
 import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-architecture.jpg";
-import appleCover from "../../assets/images/projects/apple-clone-cover.png";
+import appleThumb from "../../assets/images/projects/apple-clone-thumb.png";
 import appleMac from "../../assets/images/projects/apple-clone-mac.png";
 import appleIphone from "../../assets/images/projects/apple-clone-iphone.png";
 import evangadiThumb from "../../assets/images/projects/evangadi-forum-thumb.png";
@@ -67,7 +67,7 @@ const projects = [
   },
   {
     title: "Apple Clone",
-    thumbImage: appleCover,
+    thumbImage: appleThumb,
     sliderImages: [appleMac, appleIphone],
     categories: ["AI-powered-full-stack"],
     summary: "A responsive Apple store homepage. Each header item opens that product's photo and copy, and search expands in the bar.",
