@@ -27,6 +27,13 @@ const filters = [
   { key: "AI-powered-full-stack", label: "AI-powered full-stack" },
 ];
 
+const aiPoweredOrder = {
+  "Evangadi Forum": 1,
+  "GPT Clone": 2,
+  "Netflix Clone": 3,
+  "Apple Clone": 4,
+};
+
 const projects = [
   {
     title: "Netflix Clone",
@@ -142,6 +149,9 @@ const PortfolioSection = () => {
       isotope.current = new Isotope(grid, {
         itemSelector: ".filter-item",
         layoutMode: "masonry",
+        getSortData: {
+          aiOrder: "[data-ai-order] parseInt",
+        },
       });
     } catch {
       isotope.current = null;
@@ -153,8 +163,11 @@ const PortfolioSection = () => {
 
   useEffect(() => {
     if (!imagesLoaded || !isotope.current) return;
+    const aiPowered = filterKey === "AI-powered-full-stack";
     isotope.current.arrange({
       filter: filterKey === "*" ? "*" : `.${filterKey}`,
+      sortBy: aiPowered ? "aiOrder" : "original-order",
+      sortAscending: true,
     });
   }, [filterKey, imagesLoaded]);
 
@@ -223,6 +236,7 @@ const PortfolioSection = () => {
                     "col-sm-6 col-lg-4 filter-item " +
                     project.categories.join(" ")
                   }
+                  data-ai-order={aiPoweredOrder[project.title] ?? 100 + index}
                   key={project.title}
                 >
                   <ProjectCard
