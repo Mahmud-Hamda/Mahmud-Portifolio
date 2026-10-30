@@ -91,6 +91,12 @@
   line-height: 1.2;
 }
 
+.eyeIcon {
+  width: 1.15em;
+  height: 1em;
+  flex: 0 0 auto;
+}
+
 .hoverLinks {
   display: flex;
   flex-wrap: wrap;
