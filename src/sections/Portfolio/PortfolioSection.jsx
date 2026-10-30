@@ -18,6 +18,7 @@ import appleMac from "../../assets/images/projects/apple-clone-mac.png";
 import appleIphone from "../../assets/images/projects/apple-clone-iphone.png";
 import evangadiCover from "../../assets/images/projects/evangadi-forum-cover.png";
 import evangadiFeed from "../../assets/images/projects/evangadi-forum-feed.png";
+import evangadiPassword from "../../assets/images/projects/evangadi-forum-password.png";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -106,6 +107,21 @@ const projects = [
       "The open tab signs out after 15 minutes with no activity",
     ],
     note: "Student project. The live site uses the Vercel API and TiDB Cloud.",
+    cybersecurity: {
+      summary:
+        "Password first, then the device face, the device fingerprint, or an email code. An idle tab signs out after 15 minutes.",
+      description:
+        "Sign-in takes two steps. The password comes first. The next step is the device face, the device fingerprint, or a one-time email code. Face uses a live camera and stops if the lens is covered. Fingerprint uses the authenticator on the device and skips the camera. The email code expires in 10 minutes. An open tab signs out after 15 minutes with no activity, and the page stays open. The PDF library stays private to that account.",
+      features: [
+        "Password, then face, fingerprint, or an email code",
+        "Face uses a live camera and rejects a covered lens",
+        "Fingerprint uses the device authenticator and skips the camera",
+        "The email code expires in 10 minutes",
+        "An open tab signs out after 15 minutes with no activity",
+      ],
+      sliderImages: [evangadiCover, evangadiPassword],
+      note: "Student project. Face and fingerprint stay on the device. The email code works once.",
+    },
   },
   { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },
   { title: "Project Title 5", thumbImage: project5, sliderImages: [project1, project5], categories: ["Cybersecurity"] },
@@ -143,6 +159,11 @@ const PortfolioSection = () => {
   }, [filterKey, imagesLoaded]);
 
   const onImageLoad = () => setImagesLoaded((count) => count + 1);
+
+  const forFilter = (project) => {
+    if (filterKey !== "Cybersecurity" || !project?.cybersecurity) return project;
+    return { ...project, ...project.cybersecurity };
+  };
 
   return (
     <>
@@ -205,7 +226,7 @@ const PortfolioSection = () => {
                   key={project.title}
                 >
                   <ProjectCard
-                    project={project}
+                    project={forFilter(project)}
                     onImageLoad={onImageLoad}
                     onSelect={() => setSelectedProject(projects[index])}
                   />
@@ -222,7 +243,7 @@ const PortfolioSection = () => {
         </div>
       </section>
       <div className="project-details-modal">
-        <ProjectDetailsModal projectDetails={selectedProject} />
+        <ProjectDetailsModal projectDetails={forFilter(selectedProject)} />
       </div>
     </>
   );
