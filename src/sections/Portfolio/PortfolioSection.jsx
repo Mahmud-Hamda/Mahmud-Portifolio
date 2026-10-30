@@ -142,16 +142,26 @@ const PortfolioSection = () => {
   useEffect(() => {
     const grid = document.querySelector(".portfolio-filter");
     if (!grid) return undefined;
+    let instance = null;
     try {
-      isotope.current = new Isotope(grid, {
+      instance = new Isotope(grid, {
         itemSelector: ".filter-item",
-        layoutMode: "masonry",
+        layoutMode: "fitRows",
       });
+      isotope.current = instance;
     } catch {
       isotope.current = null;
     }
+    const layout = () => instance?.layout();
+    const images = [...grid.querySelectorAll("img")];
+    images.forEach((image) => {
+      if (!image.complete) image.addEventListener("load", layout);
+    });
+    const frame = requestAnimationFrame(layout);
     return () => {
-      isotope.current?.destroy();
+      cancelAnimationFrame(frame);
+      images.forEach((image) => image.removeEventListener("load", layout));
+      instance?.destroy();
     };
   }, []);
 
@@ -224,7 +234,7 @@ const PortfolioSection = () => {
               {orderedProjects.map((project, index) => (
                 <div
                   className={
-                    "col-sm-6 col-lg-4 filter-item " +
+                    "col-sm-6 col-lg-6 filter-item " +
                     project.categories.join(" ")
                   }
                   key={project.title}
@@ -238,7 +248,7 @@ const PortfolioSection = () => {
               ))}
             </div>
             <div className={"row g-4 " + styles.comingSoonRow}>
-              <div className="col-sm-6 col-lg-4">
+              <div className="col-sm-6 col-lg-6">
                 <div className={"portfolio-box rounded soft-card " + styles.comingSoon}>
                   <p>
                     <span className={styles.comingMark} aria-hidden="true" />
