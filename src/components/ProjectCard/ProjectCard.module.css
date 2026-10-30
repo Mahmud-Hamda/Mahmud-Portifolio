@@ -134,7 +134,7 @@
   color: #fff;
 }
 
-@media (hover: none), (max-width: 991.98px) {
+@media (hover: none) {
   .portfolio .portfolio-box.projectLive .portfolio-overlay {
     opacity: 1;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.28) 46%, rgba(0, 0, 0, 0) 72%);

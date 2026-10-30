@@ -157,9 +157,18 @@ const PortfolioSection = () => {
     images.forEach((image) => {
       if (!image.complete) image.addEventListener("load", layout);
     });
+    let lastWidth = 0;
+    const observer = new ResizeObserver(() => {
+      const width = grid.clientWidth;
+      if (width === lastWidth) return;
+      lastWidth = width;
+      layout();
+    });
+    observer.observe(grid);
     const frame = requestAnimationFrame(layout);
     return () => {
       cancelAnimationFrame(frame);
+      observer.disconnect();
       images.forEach((image) => image.removeEventListener("load", layout));
       instance?.destroy();
     };
@@ -234,7 +243,7 @@ const PortfolioSection = () => {
               {orderedProjects.map((project, index) => (
                 <div
                   className={
-                    "col-sm-6 col-lg-6 filter-item " +
+                    "col-md-6 filter-item " +
                     project.categories.join(" ")
                   }
                   key={project.title}
@@ -248,7 +257,7 @@ const PortfolioSection = () => {
               ))}
             </div>
             <div className={"row g-4 " + styles.comingSoonRow}>
-              <div className="col-sm-6 col-lg-6">
+              <div className="col-md-6">
                 <div className={"portfolio-box rounded soft-card " + styles.comingSoon}>
                   <p>
                     <span className={styles.comingMark} aria-hidden="true" />

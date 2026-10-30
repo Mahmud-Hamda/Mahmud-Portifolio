@@ -53,9 +53,14 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .comingMark {
-    animation: none;
+@media (max-width: 575.98px) {
+  .comingSoon {
+    min-height: 160px;
+    padding: 24px 16px;
+  }
+
+  .comingSoon p {
+    font-size: 1.05rem;
   }
 }
 
@@ -176,7 +181,7 @@ html[dir=rtl] .mfp-close {
   right: auto;
 }
 
-@media (hover: none), (max-width: 991.98px) {
+@media (hover: none) {
   .portfolio .portfolio-box .portfolio-overlay {
     opacity: 1;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.28) 46%, rgba(0, 0, 0, 0) 72%);

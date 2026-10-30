@@ -1494,3 +1494,13 @@ input:-internal-autofill-selected {
     left: -44px;
   }
 }
+@media (max-width: 991.98px) {
+  #styles-switcher.right {
+    top: auto;
+    bottom: 88px;
+  }
+  #styles-switcher.right .switcher-toggle {
+    top: auto;
+    bottom: 0;
+  }
+}

@@ -167,12 +167,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.35em;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .roleLine {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
   gap: 0.35em;
   min-width: 0;
   max-width: 100%;
@@ -186,6 +189,11 @@
 
   .roleLine {
     flex: 1 0 100%;
+    align-items: flex-start;
+  }
+
+  .roleLine .hero-check {
+    margin-top: 0.35em;
   }
 
   .hero-role .Typewriter,
@@ -218,8 +226,18 @@
 .hero-role .Typewriter,
 .hero-role span {
   min-width: 0;
+  max-width: 100%;
   overflow-wrap: anywhere;
   text-align: left;
+}
+
+.hero-role .Typewriter {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.hero-role .Typewriter__wrapper {
+  white-space: normal;
 }
 
 .heroCopy {
