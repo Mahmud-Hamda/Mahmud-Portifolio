@@ -22,9 +22,9 @@ import evangadiPassword from "../../assets/images/projects/evangadi-forum-passwo
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
-  { key: "Biomedical", label: "Biomedical" },
-  { key: "Cybersecurity", label: "Cybersecurity" },
   { key: "AI-powered-full-stack", label: "AI-powered full-stack" },
+  { key: "Cybersecurity", label: "Cybersecurity" },
+  { key: "Biomedical", label: "Biomedical" },
 ];
 
 const aiPoweredOrder = {
