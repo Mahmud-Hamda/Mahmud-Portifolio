@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import Isotope from "isotope-layout";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProjectDetailsModal from "../../components/ProjectDetailsModal/ProjectDetailsModal";
-import netflixCover from "../../assets/images/projects/netflix-clone-cover.jpg";
+import netflixThumb from "../../assets/images/projects/netflix-clone-thumb.png";
 import netflixHome from "../../assets/images/projects/netflix-clone-home.jpg";
 import netflixArchitecture from "../../assets/images/projects/netflix-clone-architecture.jpg";
-import gptCloneCover from "../../assets/images/projects/gpt-clone-cover.jpg";
+import gptThumb from "../../assets/images/projects/gpt-clone-thumb.png";
 import gptCloneChat from "../../assets/images/projects/gpt-clone-chat.jpg";
 import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-architecture.jpg";
 import appleCover from "../../assets/images/projects/apple-clone-cover.png";
 import appleMac from "../../assets/images/projects/apple-clone-mac.png";
 import appleIphone from "../../assets/images/projects/apple-clone-iphone.png";
+import evangadiThumb from "../../assets/images/projects/evangadi-forum-thumb.png";
 import evangadiCover from "../../assets/images/projects/evangadi-forum-cover.png";
 import evangadiFeed from "../../assets/images/projects/evangadi-forum-feed.png";
 import evangadiPassword from "../../assets/images/projects/evangadi-forum-password.png";
@@ -25,7 +26,7 @@ const filters = [
 const projects = [
   {
     title: "Netflix Clone",
-    thumbImage: netflixCover,
+    thumbImage: netflixThumb,
     sliderImages: [netflixHome, netflixArchitecture],
     categories: ["AI-powered-full-stack"],
     summary: "A Netflix-style movie and TV browser with search, trailers, accounts, and a saved My List.",
@@ -45,7 +46,7 @@ const projects = [
   },
   {
     title: "GPT Clone",
-    thumbImage: gptCloneCover,
+    thumbImage: gptThumb,
     sliderImages: [gptCloneChat, gptCloneArchitecture],
     categories: ["AI-powered-full-stack"],
     summary: "A ChatGPT-style assistant that answers full-stack web development questions and keeps each visitor's chat private.",
@@ -85,7 +86,7 @@ const projects = [
   },
   {
     title: "Evangadi Forum",
-    thumbImage: evangadiCover,
+    thumbImage: evangadiThumb,
     sliderImages: [evangadiCover, evangadiFeed],
     categories: ["AI-powered-full-stack", "Cybersecurity"],
     summary: "A learner forum with similarity search and a private PDF library, plus a second sign-in by face, fingerprint, or email code.",
