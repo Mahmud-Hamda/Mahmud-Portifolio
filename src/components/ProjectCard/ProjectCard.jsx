@@ -38,12 +38,6 @@ const ProjectCard = ({ project, onImageLoad, onSelect }) => {
             decoding="async"
           />
         )}
-        {isLive && (
-          <span className={styles.liveBadge}>
-            <span className={styles.liveDot} aria-hidden="true" />
-            Live
-          </span>
-        )}
         <div className="portfolio-overlay">
           <a
             className="popup-ajax stretched-link"
