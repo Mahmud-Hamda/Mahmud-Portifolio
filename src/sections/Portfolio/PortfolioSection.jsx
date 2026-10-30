@@ -16,6 +16,9 @@ import gptCloneArchitecture from "../../assets/images/projects/gpt-clone-archite
 import appleCover from "../../assets/images/projects/apple-clone-cover.png";
 import appleMac from "../../assets/images/projects/apple-clone-mac.png";
 import appleIphone from "../../assets/images/projects/apple-clone-iphone.png";
+import evangadiCover from "../../assets/images/projects/evangadi-forum-cover.png";
+import evangadiFeed from "../../assets/images/projects/evangadi-forum-feed.png";
+import evangadiLibrary from "../../assets/images/projects/evangadi-forum-library.png";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -84,6 +87,26 @@ const projects = [
       "Built as a static site for Vercel, with a route rule for Hostinger",
     ],
     note: "Student project. Not affiliated with Apple.",
+  },
+  {
+    title: "Evangadi Forum",
+    thumbImage: evangadiCover,
+    sliderImages: [evangadiFeed, evangadiLibrary],
+    categories: ["AI-powered-full-stack"],
+    summary: "A learner forum for technical questions, with keyword and similarity search, a private PDF library, and a second sign-in step.",
+    stack: ["React 19", "Express 5", "MySQL", "Google Gemini", "WebAuthn", "Vite", "Vercel"],
+    liveUrl: "https://ai-powered-evangadi-forum-ten.vercel.app/",
+    repoUrl: "https://github.com/Mahmud-Hamda/ai-powered-evangadi-forum",
+    description:
+      "I built a forum for Evangadi coursework. Learners post questions, reply in Markdown, and search by keyword or by similar wording. A private knowledge base indexes each person's PDFs and answers from those files with Google Gemini. After the password, sign-in continues with the device face or fingerprint, or with an email code. An open tab signs out after 15 minutes without activity.",
+    features: [
+      "Questions and answers in Markdown, with a feed, your topics, and a question page",
+      "Keyword search and similarity search over the cohort's questions",
+      "Private PDF library with answers grounded in that account's files",
+      "Password, then face, fingerprint, or an email code",
+      "The open tab signs out after 15 minutes with no activity",
+    ],
+    note: "Student project. The live link opens the site. Posting, search, and sign-in need the API and database, which are not hosted on this URL.",
   },
   { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },
   { title: "Project Title 5", thumbImage: project5, sliderImages: [project1, project5], categories: ["Cybersecurity"] },
