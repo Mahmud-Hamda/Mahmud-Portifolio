@@ -18,7 +18,6 @@ import appleMac from "../../assets/images/projects/apple-clone-mac.png";
 import appleIphone from "../../assets/images/projects/apple-clone-iphone.png";
 import evangadiCover from "../../assets/images/projects/evangadi-forum-cover.png";
 import evangadiFeed from "../../assets/images/projects/evangadi-forum-feed.png";
-import evangadiLibrary from "../../assets/images/projects/evangadi-forum-library.png";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -91,7 +90,7 @@ const projects = [
   {
     title: "Evangadi Forum",
     thumbImage: evangadiCover,
-    sliderImages: [evangadiFeed, evangadiLibrary],
+    sliderImages: [evangadiCover, evangadiFeed],
     categories: ["AI-powered-full-stack"],
     summary: "A learner forum for technical questions, with keyword and similarity search, a private PDF library, and a second sign-in step.",
     stack: ["React 19", "Express 5", "MySQL", "Google Gemini", "WebAuthn", "Vite", "Vercel"],
