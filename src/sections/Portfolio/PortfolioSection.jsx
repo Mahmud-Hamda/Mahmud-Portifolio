@@ -27,13 +27,6 @@ const filters = [
   { key: "Biomedical", label: "Biomedical" },
 ];
 
-const aiPoweredOrder = {
-  "Evangadi Forum": 1,
-  "GPT Clone": 2,
-  "Netflix Clone": 3,
-  "Apple Clone": 4,
-};
-
 const projects = [
   {
     title: "Netflix Clone",
@@ -136,6 +129,18 @@ const projects = [
   { title: "Project Title 7", thumbImage: project7, sliderImages: [project1, project5], categories: ["Cybersecurity", "AI-powered-full-stack"] },
 ];
 
+const aiPoweredOrder = ["Evangadi Forum", "GPT Clone", "Netflix Clone", "Apple Clone"];
+
+const orderedProjects = [...projects].sort((left, right) => {
+  const rank = (title) => {
+    const index = aiPoweredOrder.indexOf(title);
+    return index === -1 ? aiPoweredOrder.length : index;
+  };
+  const difference = rank(left.title) - rank(right.title);
+  if (difference !== 0) return difference;
+  return projects.indexOf(left) - projects.indexOf(right);
+});
+
 const PortfolioSection = () => {
   const isotope = useRef();
   const [filterKey, setFilterKey] = useState("*");
@@ -149,9 +154,6 @@ const PortfolioSection = () => {
       isotope.current = new Isotope(grid, {
         itemSelector: ".filter-item",
         layoutMode: "masonry",
-        getSortData: {
-          aiOrder: "[data-ai-order] parseInt",
-        },
       });
     } catch {
       isotope.current = null;
@@ -163,11 +165,8 @@ const PortfolioSection = () => {
 
   useEffect(() => {
     if (!imagesLoaded || !isotope.current) return;
-    const aiPowered = filterKey === "AI-powered-full-stack";
     isotope.current.arrange({
       filter: filterKey === "*" ? "*" : `.${filterKey}`,
-      sortBy: aiPowered ? "aiOrder" : "original-order",
-      sortAscending: true,
     });
   }, [filterKey, imagesLoaded]);
 
@@ -230,19 +229,18 @@ const PortfolioSection = () => {
           </ul>
           <div className="portfolio popup-ajax-gallery">
             <div className="row portfolio-filter filter-container g-4">
-              {projects.map((project, index) => (
+              {orderedProjects.map((project, index) => (
                 <div
                   className={
                     "col-sm-6 col-lg-4 filter-item " +
                     project.categories.join(" ")
                   }
-                  data-ai-order={aiPoweredOrder[project.title] ?? 100 + index}
                   key={project.title}
                 >
                   <ProjectCard
                     project={forFilter(project)}
                     onImageLoad={onImageLoad}
-                    onSelect={() => setSelectedProject(projects[index])}
+                    onSelect={() => setSelectedProject(orderedProjects[index])}
                   />
                 </div>
               ))}
