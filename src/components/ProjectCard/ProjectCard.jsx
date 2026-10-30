@@ -56,9 +56,26 @@ const ProjectCard = ({ project, onImageLoad, onSelect }) => {
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           />
-          <div className="portfolio-overlay-details">
+          <div className={"portfolio-overlay-details " + (isLive ? styles.hoverActions : "")}>
             {isLive ? (
-              <p className="h6 text-white fw-500 mb-0">See details</p>
+              <>
+                <p className={styles.seeDetails}>
+                  <i className="fas fa-eye" aria-hidden="true" />
+                  See details
+                </p>
+                <div className={styles.hoverLinks}>
+                  <a className={styles.hoverLink} href={project.liveUrl} target="_blank" rel="noreferrer">
+                    <i className="fas fa-globe" aria-hidden="true" />
+                    Live site
+                  </a>
+                  {project.repoUrl && (
+                    <a className={styles.hoverLink} href={project.repoUrl} target="_blank" rel="noreferrer">
+                      <i className="fab fa-github" aria-hidden="true" />
+                      Code
+                    </a>
+                  )}
+                </div>
+              </>
             ) : (
               <>
                 <p className="h5 text-white fw-400 mb-0">{project.title}</p>
@@ -72,36 +89,7 @@ const ProjectCard = ({ project, onImageLoad, onSelect }) => {
           </div>
         </div>
       </div>
-      {isLive && (
-        <div className={styles.projectBody}>
-          <h3 className={styles.projectName}>{project.title}</h3>
-          {project.categories.length > 1 && (
-            <p className={styles.fit}>
-              {project.categories
-                .map((category) => categoryLabels[category] ?? category)
-                .join(" · ")}
-            </p>
-          )}
-          <p className={styles.projectSummary}>{project.summary}</p>
-          <ul className={styles.stackList} aria-label="Built with">
-            {project.stack.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <div className={styles.projectLinks}>
-            <a className={styles.linkPrimary} href={project.liveUrl} target="_blank" rel="noreferrer">
-              <i className="fas fa-globe" aria-hidden="true" />
-              Live site
-            </a>
-            {project.repoUrl && (
-              <a className={styles.linkSecondary} href={project.repoUrl} target="_blank" rel="noreferrer">
-                <i className="fab fa-github" aria-hidden="true" />
-                Code
-              </a>
-            )}
-          </div>
-        </div>
-      )}
+      {isLive && <h3 className={styles.projectName}>{project.title}</h3>}
     </div>
   );
 };

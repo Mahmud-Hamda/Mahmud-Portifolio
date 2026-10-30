@@ -45,6 +45,7 @@
 .fa-angles-down::before { content: "\f103"; }
 .fa-chevron-right::before { content: "\f054"; }
 .fa-star::before { content: "\f005"; }
+.fa-eye::before { content: "\f06e"; }
 .fa-globe::before { content: "\f0ac"; }
 .fa-cog::before { content: "\f013"; }
 .fa-graduation-cap::before { content: "\f19d"; }

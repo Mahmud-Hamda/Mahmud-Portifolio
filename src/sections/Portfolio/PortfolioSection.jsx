@@ -240,7 +240,10 @@ const PortfolioSection = () => {
             <div className={"row g-4 " + styles.comingSoonRow}>
               <div className="col-sm-6 col-lg-4">
                 <div className={"portfolio-box rounded soft-card " + styles.comingSoon}>
-                  <p>More is to be added soon.</p>
+                  <p>
+                    <span className={styles.comingMark} aria-hidden="true" />
+                    More to be added soon!
+                  </p>
                 </div>
               </div>
             </div>

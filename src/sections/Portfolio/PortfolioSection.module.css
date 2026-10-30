@@ -21,12 +21,42 @@
 }
 
 .comingSoon p {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   margin: 0;
-  max-width: 16rem;
-  color: #4c4d4d;
-  font-size: 1.15rem;
+  color: #121212;
+  font-size: 1.2rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   line-height: 1.45;
+}
+
+.comingMark {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--button);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--button) 50%, transparent);
+  animation: comingPulse 1.8s ease-out infinite;
+}
+
+@keyframes comingPulse {
+  70% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comingMark {
+    animation: none;
+  }
 }
 
 /*=== 5.9 Portfolio ===*/
