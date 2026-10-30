@@ -12,10 +12,10 @@ const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const reviews = [
-  { name: "Dennis Jacques", position: "User from USA", src: client3, desc: "Only trying it out since a few days. But up to now excellent. Seems to work flawlessly. priced simply dummy text of the printing and typesetting industry.", rating: 5 },
-  { name: "Jay Shah", position: "Founder at Icomatic Pvt Ltd", src: client1, desc: "Easy to use, reasonably priced simply dummy text of the printing and typesetting industry. Quidam lisque persius interesset his et, in quot quidam possim iriure.", rating: 5 },
-  { name: "Patrick Cary", position: "Freelancer from USA", src: client2, desc: "I am happy Working with printing and typesetting industry. Quidam lisque persius interesset his et, in quot quidam persequeris essent possim iriure.", rating: 5 },
-  { name: "Chris Tom", position: "User from UK", src: client4, desc: "I have used them twice now. Good rates, very efficient service and priced simply dummy text of the printing and typesetting industry quidam interesset his et. Excellent.", rating: 5 },
+  { name: "Dennis Jacques", position: "User from USA", src: client3, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", rating: 5 },
+  { name: "Jay Shah", position: "Founder at Icomatic Pvt Ltd", src: client1, desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", rating: 5 },
+  { name: "Patrick Cary", position: "Freelancer from USA", src: client2, desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", rating: 5 },
+  { name: "Chris Tom", position: "User from UK", src: client4, desc: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", rating: 5 },
 ];
 
 const Testimonials = () => {
