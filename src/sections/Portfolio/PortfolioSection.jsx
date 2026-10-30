@@ -106,7 +106,7 @@ const projects = [
       "Password, then face, fingerprint, or an email code",
       "The open tab signs out after 15 minutes with no activity",
     ],
-    note: "Student project. The live link opens the site. Posting, search, and sign-in need the API and database, which are not hosted on this URL.",
+    note: "Student project. The live site uses the Vercel API and TiDB Cloud.",
   },
   { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },
   { title: "Project Title 5", thumbImage: project5, sliderImages: [project1, project5], categories: ["Cybersecurity"] },
