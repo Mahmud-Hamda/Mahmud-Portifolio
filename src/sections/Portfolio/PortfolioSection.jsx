@@ -2,11 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import Isotope from "isotope-layout";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProjectDetailsModal from "../../components/ProjectDetailsModal/ProjectDetailsModal";
-import project1 from "../../assets/images/projects/project-1.jpg";
-import project4 from "../../assets/images/projects/project-4.jpg";
-import project5 from "../../assets/images/projects/project-5.jpg";
-import project6 from "../../assets/images/projects/project-6.jpg";
-import project7 from "../../assets/images/projects/project-7.jpg";
 import netflixCover from "../../assets/images/projects/netflix-clone-cover.jpg";
 import netflixHome from "../../assets/images/projects/netflix-clone-home.jpg";
 import netflixArchitecture from "../../assets/images/projects/netflix-clone-architecture.jpg";
@@ -123,10 +118,6 @@ const projects = [
       note: "Student project. Face and fingerprint stay on the device. The email code works once.",
     },
   },
-  { title: "Project Title 4", thumbImage: project4, sliderImages: [project1, project4], categories: ["Biomedical", "AI-powered-full-stack"] },
-  { title: "Project Title 5", thumbImage: project5, sliderImages: [project1, project5], categories: ["Cybersecurity"] },
-  { title: "Project Title 6", thumbImage: project6, sliderImages: [project1, project5], categories: ["Biomedical"] },
-  { title: "Project Title 7", thumbImage: project7, sliderImages: [project1, project5], categories: ["Cybersecurity", "AI-powered-full-stack"] },
 ];
 
 const aiPoweredOrder = ["Evangadi Forum", "GPT Clone", "Netflix Clone", "Apple Clone"];
@@ -245,12 +236,13 @@ const PortfolioSection = () => {
                 </div>
               ))}
             </div>
-            {projects.every(
-              (project) =>
-                filterKey !== "*" && !project.categories.includes(filterKey)
-            ) ? (
-              <p className={styles.empty}>No samples in this group.</p>
-            ) : null}
+            <div className={"row g-4 " + styles.comingSoonRow}>
+              <div className="col-sm-6 col-lg-4">
+                <div className={"portfolio-box rounded soft-card " + styles.comingSoon}>
+                  <p>More is to be added soon.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

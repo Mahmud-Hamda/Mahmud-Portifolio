@@ -2,12 +2,31 @@
   box-sizing: border-box;
 }
 
-.empty {
-  margin: 0;
-  color: #121212;
-  font-size: 16px;
-  line-height: 1.45;
+.comingSoonRow {
+  margin-top: 24px;
+}
+
+.comingSoon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 28px 24px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(18, 18, 18, 0.06),
+    0 18px 36px rgba(18, 18, 18, 0.1);
   text-align: center;
+}
+
+.comingSoon p {
+  margin: 0;
+  max-width: 16rem;
+  color: #4c4d4d;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 /*=== 5.9 Portfolio ===*/
