@@ -2,7 +2,7 @@ import { ArrowUp, Bot, User } from "lucide-react";
 import { Fragment, useEffect, useId, useRef, useState } from "react";
 import BrandName, { highlightName } from "../BrandName/BrandName";
 import {
-  DECLINE,
+  declineReply,
   EMPTY_QUESTION,
   GREETING,
   GREETING_PATTERN,
@@ -18,19 +18,19 @@ const THINKING_DELAY_MS = 700;
 
 const Disclaimer = ({ className }) => (
   <p className={className}>
-    <BrandName>Ask Mahmud</BrandName> is AI and can make mistakes.
+    <BrandName>Ask Mahmud</BrandName> can make mistakes.
   </p>
 );
 
 const prompts = [
   "What do you do?",
-  "Are you open to a role?",
+  "What have you built?",
   "How do I reach you?",
 ];
 
 const welcome = {
   role: "assistant",
-  text: "Ask about Mahmud's work, background, or how to reach him.",
+  text: "Ask about Mahmud's work, the sites he has built, or how to reach him.",
 };
 
 const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -53,14 +53,14 @@ const answerQuestion = async (question) => {
 
   if (!normalized) return EMPTY_QUESTION;
   if (GREETING_PATTERN.test(normalized)) return GREETING;
-  if (UNSUPPORTED_REQUEST.test(normalized)) return DECLINE;
+  if (UNSUPPORTED_REQUEST.test(normalized)) return declineReply(question);
 
   try {
     const match = await findBestMatch(question);
     const decision = classifyMatch(match);
     if (decision === "answer") return match.entry.answer;
     if (decision === "suggest") return unsureReply(match.closestExample);
-    return DECLINE;
+    return declineReply(question);
   } catch (error) {
     console.error("Ask Mahmud search failed:", error);
     return SEARCH_UNAVAILABLE;
@@ -194,7 +194,7 @@ const AskMahmud = () => {
               <h2 id={titleId} className={styles.title}>
                 <BrandName>Ask Mahmud</BrandName>
               </h2>
-              <p className={styles.note}>Answers from this page.</p>
+              <p className={styles.note}>Work, sites, background, and contact.</p>
             </div>
             <button type="button" className={styles.close} onClick={() => setOpen(false)} aria-label="Close Ask Mahmud">
               <i className="fas fa-times" aria-hidden="true" />
@@ -230,7 +230,7 @@ const AskMahmud = () => {
                   <span className={styles.thinkingDot} />
                   <span className={styles.thinkingDot} />
                   {searchStatus === "loading" && (
-                    <span className={styles.thinkingNote}>Loading search (first time only)</span>
+                    <span className={styles.thinkingNote}>Loading, first visit only</span>
                   )}
                 </div>
               </div>
@@ -253,14 +253,14 @@ const AskMahmud = () => {
             }}
           >
             <Disclaimer className={styles.disclaimer} />
-            <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask Mahmud Semantically</label>
+            <label className={styles.srOnly} htmlFor="ask-mahmud-input">Ask a question</label>
             <div className={styles.inputBox}>
               <input
                 id="ask-mahmud-input"
                 ref={inputRef}
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
-                placeholder="Ask Mahmud Semantically"
+                placeholder="Ask a question"
                 maxLength={240}
               />
               {draft.trim() && (
