@@ -7,24 +7,22 @@ const services = [
     name: "AI-powered full-stack",
     image: "stack",
     paragraphs: [
-      "Building modern, end-to-end web applications designed for high performance and seamless user experiences. On the frontend, I craft fully Responsive Designs using React.js, JavaScript (ES6+), HTML5/CSS3, and Bootstrap 5. On the backend, I architect scalable server-side solutions using Node.js & Express.js, MySQL Database Design, and custom REST API Development—integrated with Git & GitHub for version control.",
-      "Building modern, end-to-end solutions focusing not only on Full-Stack Web Development but also elevating standard web applications by embedding advanced AI integrations—including custom chatbots, Semantic Search, Retrieval-Augmented Generation (RAG), and interactive AI coaches—giving your platform cutting-edge smart capabilities, automated workflows, and rich contextual intelligence.",
-      "I design the interface and carry it through to a published site. Layout, type, and color are built with HTML5, CSS3, and Bootstrap 5 so the page stays clear and responsive on every screen. Deployment puts that finished design online, with Git & GitHub keeping each version of the site in order.",
+      "I build web applications from the interface through to a published site. The frontend uses React.js, JavaScript (ES6+), HTML5, CSS3, and Bootstrap 5, so the layout stays clear on every screen. The backend uses Node.js, Express.js, MySQL, and REST APIs. Git and GitHub keep each version in order.",
+      "Where it helps the product, I add AI: custom chatbots, semantic search, retrieval-augmented generation (RAG), and interactive coaches. These features answer questions, search a site’s own material, and support automated workflows.",
     ],
   },
   {
     name: "Cybersecurity",
     image: "security",
     paragraphs: [
-      "Applying a security-first mindset (backed by CompTIA Security+ expertise) to your digital products. I audit code, implement secure data handling, and ensure your applications are resilient against modern web threats. Leveraging specialized capabilities in Access Control, Cryptography, Threat Detection, and Network Security, I build and manage hardened web environments that protect critical user data and safeguard infrastructure from end to end.",
+      "I bring a security-first approach, backed by CompTIA Security+. I review code, handle data securely, and harden web applications against current threats. The work covers access control, cryptography, threat detection, and network security, so user data and the systems behind it stay protected.",
     ],
   },
   {
-    name: "Biomedical engineering",
+    name: "Biomedical Engineering",
     image: "biomed",
     paragraphs: [
-      "Applying rigorous engineering discipline to Biomedical Device Lifecycle Management—ensuring medical and critical hardware operates at peak reliability, safety, and compliance. Leveraging deep hands-on expertise in Equipment Installation, Calibration, Preventive Maintenance, and advanced Troubleshooting, I manage systems from initial deployment through ongoing servicing. By combining this hardware-level precision with Cyber Security Risk management, I bridge the gap between physical medical equipment and secure digital infrastructures.",
-      "As a dedicated Medical Equipment Technician, I specialize in the comprehensive lifecycle management of critical hospital technology—from complex life-support systems (ventilators, defibrillators) and diagnostic monitors to advanced imaging and surgical suites. My daily work bridges hands-on engineering precision with clinical safety: executing rigorous installation, calibration, and preventive maintenance to guarantee flawless therapeutic output, performing rapid troubleshooting and repairs, and maintaining meticulous regulatory compliance. Beyond hardware, I manage OEM software patches, support medical device connectivity, and educate clinical staff to eliminate user error—ensuring that every piece of medical technology operates at peak reliability when patient care depends on it.",
+      "I manage hospital equipment through its full life, from life-support systems such as ventilators and defibrillators to diagnostic monitors, imaging, and surgical suites. I install, calibrate, and maintain that equipment, and I repair it when it fails, so it stays reliable and within regulations. I also apply manufacturer software updates, support device connections, and train clinical staff so the equipment is used correctly when patient care depends on it.",
     ],
   },
 ];

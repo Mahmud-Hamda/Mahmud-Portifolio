@@ -155,7 +155,7 @@ export const KNOWLEDGE = [
     ],
     answer: {
       text: "Mahmud Hamda is a senior biomedical engineer. His hospital work covered installation, calibration, preventive maintenance, and troubleshooting of medical equipment, including life-support systems, diagnostic monitors, and imaging and surgical suites.",
-      actions: [{ label: "See Biomedical engineering", section: "services" }],
+      actions: [{ label: "See Biomedical Engineering", section: "services" }],
     },
   },
   {
@@ -345,10 +345,10 @@ export const KNOWLEDGE = [
       "are the testimonials genuine",
       "what do clients say",
       "client speak quotes",
-      "read the sample testimonials",
+      "read the client speak quotes",
     ],
     answer: {
-      text: "The Testimonial section on the portfolio is titled Client Speak. The portfolio states that those quotes are sample quotes for the layout and that they are not client feedback. Dennis Jacques, User from USA: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Jay Shah, Founder at Icomatic Pvt Ltd: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Patrick Cary, Freelancer from USA: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Chris Tom, User from UK: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Each sample quote is shown with five stars.",
+      text: "The Testimonial section on the portfolio is titled Client Speak. Adugna Bekele, CEO/Founder @ Evangadi Tech | Empowering Global Talent ~ Software Developer | Electrical Engineer | Teacher | Entrepreneur from USA, says: Mahmud is an exceptionally dedicated and curious professional. His communication throughout our collaboration was top-notch—always proactive, clear, and focused on delivering high-quality results. It was a pleasure having someone so committed to excellence in my team! That quote is shown with five stars. Eyob Berhe, Cloud Platform Engineer | Tech Solutions Architecture Associate Manager | DevOps | Kubernetes | Docker | Full Stack Web Developer, says: I enjoyed collaborating with him on our projects and appreciated his dedication, teamwork, and willingness to tackle challenges together. He brought thoughtful ideas and a strong commitment to delivering quality work. That quote is shown with five stars. Mekuanint Tewende, Full-Stack Software Engineer, says: Mahmud Hamda is a creative, dedicated, and passionate individual who consistently demonstrates a strong commitment to his work. I appreciate his problem-solving mindset, willingness to learn, and drive to deliver quality results. It's a pleasure to know and work with him. That quote is shown with five stars.",
     },
   },
   {

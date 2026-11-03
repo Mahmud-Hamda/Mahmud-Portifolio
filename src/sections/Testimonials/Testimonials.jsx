@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Slider from "react-slick";
-import client1 from "../../assets/images/testimonial/client-sm-1.jpg";
-import client2 from "../../assets/images/testimonial/client-sm-2.jpg";
-import client3 from "../../assets/images/testimonial/client-sm-3.jpg";
-import client4 from "../../assets/images/testimonial/client-sm-4.jpg";
+import adugnaBekele from "../../assets/images/testimonial/adugna-bekele.png";
+import eyobBerhe from "../../assets/images/testimonial/eyob-berhe.jpg";
+import mekuanintTewende from "../../assets/images/testimonial/mekuanint-tewende.png";
 import styles from "./Testimonials.module.css";
 
 const SLIDE_INTERVAL_MS = 5000;
@@ -12,10 +11,27 @@ const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const reviews = [
-  { name: "Dennis Jacques", position: "User from USA", src: client3, desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", rating: 5 },
-  { name: "Jay Shah", position: "Founder at Icomatic Pvt Ltd", src: client1, desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", rating: 5 },
-  { name: "Patrick Cary", position: "Freelancer from USA", src: client2, desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", rating: 5 },
-  { name: "Chris Tom", position: "User from UK", src: client4, desc: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", rating: 5 },
+  {
+    name: "Adugna Bekele",
+    position: "CEO/Founder @ Evangadi Tech | Empowering Global Talent ~ Software Developer | Electrical Engineer | Teacher | Entrepreneur from USA",
+    src: adugnaBekele,
+    desc: "Mahmud is an exceptionally dedicated and curious professional. His communication throughout our collaboration was top-notch—always proactive, clear, and focused on delivering high-quality results. It was a pleasure having someone so committed to excellence in my team!",
+    rating: 5,
+  },
+  {
+    name: "Eyob Berhe",
+    position: "Cloud Platform Engineer | Tech Solutions Architecture Associate Manager | DevOps | Kubernetes | Docker | Full\u00A0Stack Web Developer",
+    src: eyobBerhe,
+    desc: "I enjoyed collaborating with him on our projects and appreciated his dedication, teamwork, and willingness to tackle challenges together. He brought thoughtful ideas and a strong commitment to delivering quality work.",
+    rating: 5,
+  },
+  {
+    name: "Mekuanint Tewende",
+    position: "Full-Stack Software Engineer",
+    src: mekuanintTewende,
+    desc: "Mahmud Hamda is a creative, dedicated, and passionate individual who consistently demonstrates a strong commitment to his work. I appreciate his problem-solving mindset, willingness to learn, and drive to deliver quality results. It's a pleasure to know and work with him.",
+    rating: 5,
+  },
 ];
 
 const Testimonials = () => {
@@ -98,9 +114,6 @@ const Testimonials = () => {
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
-        <p className="text-center mb-4">
-          Sample quotes for the layout. Not client feedback.
-        </p>
 
         <Slider {...settings} ref={sliderRef}>
           {reviews.length > 0 &&
@@ -111,15 +124,21 @@ const Testimonials = () => {
                     "soft-card rounded p-5 "
                   }
                 >
-                  <div className="d-flex align-items-center mt-auto mb-4">
-                    <img
-                      className="img-fluid rounded-circle border d-inline-block w-auto"
-                      src={value.src}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <p className="ms-3 mb-0">
+                  <div className={"d-flex align-items-center mt-auto mb-4 " + styles.identity}>
+                    {value.src ? (
+                      <img
+                        className={"img-fluid rounded-circle border d-inline-block " + styles.portrait}
+                        src={value.src}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className={styles.initials} aria-hidden="true">
+                        {value.initials}
+                      </span>
+                    )}
+                    <p className={"mb-0 " + styles.identityText}>
                       <strong
                         className={
                           "d-block fw-600 " +
