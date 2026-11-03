@@ -11,6 +11,13 @@ import {
   unsureReply,
 } from "./knowledge";
 import { classifyMatch, findBestMatch, loadSearchIndex } from "./semanticSearch";
+import {
+  MAX_QUESTION_LENGTH,
+  questionLimitMessage,
+  recordQuestion,
+  recordRequest,
+  requestLimitMessage,
+} from "./usageLimit";
 import styles from "./AskMahmud.module.css";
 
 // Shortest time the thinking dots show, so a fast answer still reads as a reply
@@ -112,6 +119,11 @@ const AskMahmud = () => {
   // Start downloading the search model as soon as the panel opens (cached after the first visit)
   useEffect(() => {
     if (!open || searchStatus !== "idle") return;
+    if (requestLimitMessage()) {
+      setSearchStatus("error");
+      return;
+    }
+    recordRequest();
     setSearchStatus("loading");
     loadSearchIndex()
       .then(() => setSearchStatus("ready"))
@@ -147,6 +159,20 @@ const AskMahmud = () => {
   const ask = async (text) => {
     const trimmed = text.trim();
     if (!trimmed || isThinking) return;
+    const limitMessage =
+      trimmed.length > MAX_QUESTION_LENGTH
+        ? `Questions can be at most ${MAX_QUESTION_LENGTH} characters.`
+        : questionLimitMessage();
+    if (limitMessage) {
+      setDraft("");
+      setMessages((current) => [
+        ...current,
+        { role: "user", text: trimmed },
+        { role: "assistant", text: limitMessage },
+      ]);
+      return;
+    }
+    recordQuestion();
     setMessages((current) => [...current, { role: "user", text: trimmed }]);
     setDraft("");
     setIsThinking(true);
@@ -261,7 +287,7 @@ const AskMahmud = () => {
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
                 placeholder="Ask a question"
-                maxLength={240}
+                maxLength={MAX_QUESTION_LENGTH}
               />
               {draft.trim() && (
                 <button type="submit" className={styles.sendButton} disabled={!canSend} aria-label="Send">
