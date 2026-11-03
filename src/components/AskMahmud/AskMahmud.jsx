@@ -18,7 +18,7 @@ const THINKING_DELAY_MS = 700;
 
 const Disclaimer = ({ className }) => (
   <p className={className}>
-    <BrandName>Ask Mahmud</BrandName> can make mistakes.
+    <BrandName>Ask Mahmud</BrandName> is AI and can make mistakes.
   </p>
 );
 
