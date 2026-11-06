@@ -15,6 +15,9 @@ import evangadiThumb from "../../assets/images/projects/evangadi-forum-thumb.png
 import evangadiCover from "../../assets/images/projects/evangadi-forum-cover.png";
 import evangadiFeed from "../../assets/images/projects/evangadi-forum-feed.png";
 import evangadiPassword from "../../assets/images/projects/evangadi-forum-password.png";
+import portfolioThumb from "../../assets/images/projects/portfolio-thumb.png";
+import portfolioAsk from "../../assets/images/projects/portfolio-ask.png";
+import portfolioSkills from "../../assets/images/projects/portfolio-skills.png";
 import styles from "./PortfolioSection.module.css";
 
 const filters = [
@@ -119,9 +122,29 @@ const projects = [
       note: "Student project. Face and fingerprint stay on the device. The email code works once.",
     },
   },
+  {
+    title: "Personal Portfolio",
+    thumbImage: portfolioThumb,
+    sliderImages: [portfolioAsk, portfolioSkills],
+    categories: ["AI-powered-full-stack"],
+    summary: "This site. One page for my background, the work, a resume download, and an assistant that answers from the page.",
+    stack: ["React 18", "Bootstrap 5", "Vite", "EmailJS"],
+    liveUrl: "https://mahmudhamda.tech/",
+    repoUrl: "https://github.com/Mahmud-Hamda/Mahmud-Portifolio",
+    description:
+      "I built this portfolio as one scrolling page. It introduces my background, the projects on this page, and a way to reach me. Ask Mahmud answers questions from the material already on the site, in the browser.",
+    features: [
+      "Home, about, services, resume, portfolio, testimonials, and contact",
+      "A resume PDF to download",
+      "A contact form that sends the note by email",
+      "Ask Mahmud answers from the material already on the page",
+      "A color switcher for the page theme",
+    ],
+    note: "Student project. This card is the site you are on.",
+  },
 ];
 
-const aiPoweredOrder = ["Evangadi Forum", "GPT Clone", "Netflix Clone", "Apple Clone"];
+const aiPoweredOrder = ["Evangadi Forum", "GPT Clone", "Netflix Clone", "Apple Clone", "Personal Portfolio"];
 
 const orderedProjects = [...projects].sort((left, right) => {
   const rank = (title) => {

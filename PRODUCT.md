@@ -31,12 +31,13 @@ The current site has a side menu, about details, a services list, education and 
 
 What I Do has three notes, in this order: AI-powered full-stack, Cybersecurity, and Biomedical Engineering. The copy is in `src/sections/Services/Services.jsx`.
 
-My Work has four cards, in this order: Evangadi Forum, GPT Clone, Netflix Clone, and Apple Clone. Filters are All, AI-powered full-stack, Cybersecurity, and Biomedical. The Biomedical filter has no card yet. The grid ends with "More to be added soon!" Each card is a student project, not a client engagement. The data and links are in `src/sections/Portfolio/PortfolioSection.jsx`.
+My Work has five cards, in this order: Evangadi Forum, GPT Clone, Netflix Clone, Apple Clone, and Personal Portfolio. Filters are All, AI-powered full-stack, Cybersecurity, and Biomedical. The Biomedical filter has no card yet. The grid ends with "More to be added soon!" Each card is a student project, not a client engagement. The data and links are in `src/sections/Portfolio/PortfolioSection.jsx`.
 
 - Evangadi Forum: a learner forum with similarity search, a private PDF library, and a second sign-in by face, fingerprint, or email code. Live site https://ai-powered-evangadi-forum-ten.vercel.app/. Code https://github.com/Mahmud-Hamda/ai-powered-evangadi-forum.
 - GPT Clone: a ChatGPT-style assistant for full-stack web development questions. It uses React, Express, Google Gemini, and MySQL on TiDB Cloud. Live site https://gpt-clone-tau-sable.vercel.app/. Code https://github.com/Mahmud-Hamda/gpt-clone-app. It is not affiliated with OpenAI.
 - Netflix Clone: a React and TMDB movie browser. Live site https://netflix-clone-yscv.vercel.app/. Code https://github.com/Mahmud-Hamda/Netflix-Clone. It uses no AI and is not affiliated with Netflix.
 - Apple Clone: a responsive Apple store homepage. Live site https://student-layout.vercel.app/. Code https://github.com/Mahmud-Hamda/apple-clone. It is not affiliated with Apple.
+- Personal Portfolio: this site, one scrolling page with the background, the work, a resume download, a contact form, and Ask Mahmud. Live site https://mahmudhamda.tech/. Code https://github.com/Mahmud-Hamda/Mahmud-Portifolio. Ask Mahmud answers from the material already on the page and does not call Gemini.
 
 Client Speak has four quotes, each rated five stars: Adugna Bekele, Rediat Terefe, Eyob Berhe, and Mekuanint Tewende. Adugna, Eyob, and Mekuanint have photos. Rediat is shown with initials because no portrait is on file. The names, titles, quotes, and photos are in `src/sections/Testimonials/Testimonials.jsx`. These are real comments from people he has worked with. They are not sample cards and they are not case studies with results or metrics.
 
@@ -60,7 +61,7 @@ The name is Mahmud Hamda. The public site is https://mahmudhamda.tech/. The bind
 
 Absences future work must not fill in:
 
-- No confirmed client case studies, results, or metrics. The four project cards are student projects.
+- No confirmed client case studies, results, or metrics. The five project cards are student projects.
 - Do not add a testimonial, client, quote, or project that is not already in the files above.
 - Do not describe Ask Mahmud as a server-side Gemini chat. That description belongs to the GPT Clone.
 
@@ -68,5 +69,5 @@ Absences future work must not fill in:
 
 1. Treat a hiring decision and a client decision as equal jobs for this page.
 2. Hold the position as biomedical engineering, cybersecurity, and AI-powered full-stack work together.
-3. Keep proof honest. The four Client Speak quotes and the four project cards are the confirmed work. Leave the Biomedical filter empty until a real project belongs there.
+3. Keep proof honest. The four Client Speak quotes and the five project cards are the confirmed work. Leave the Biomedical filter empty until a real project belongs there.
 4. Add a customer, result, quote, or social profile only when it is actually on file.

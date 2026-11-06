@@ -33,6 +33,7 @@ const resume = {
         "Docker",
         "Netlify",
         "Vercel",
+        "EmailJS",  
         "RESTful APIs",
       ],
     },
@@ -159,6 +160,12 @@ const skillMarks = {
       <path fill="#32e6e2" d="M8.2 22.8 16 6.4l3.2 6.6-6.6 9.8H8.2z" />
       <path fill="#05bdba" d="M16 6.4 23.8 22.8h-6.4L14.2 16l1.8-9.6z" />
       <path fill="#014847" d="M17.4 16.2 20.6 22.8h-7.2l4-6.6z" />
+    </svg>
+  ),
+  EmailJS: (
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="#f15a24" d="M3.2 15.2 28.6 6.4 16.8 26.8 14.2 17.6 3.2 15.2z" />
+      <path fill="#fff" d="M14.2 17.6 28.6 6.4 16.8 26.8z" opacity=".42" />
     </svg>
   ),
   "RESTful APIs": (
