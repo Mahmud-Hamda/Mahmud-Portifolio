@@ -1,11 +1,39 @@
+import { BrainCircuit, CodeXml, HeartPulse, ShieldCheck } from "lucide-react";
 import BrandName from "../../components/BrandName/BrandName";
 import styles from "./About.module.css";
 
 const about = {
   eyebrow: "About Me",
   title: "Know Me More",
-  paragraphs: [
-    "I am a Senior Biomedical Engineer and Certified Cybersecurity Professional turned AI-Powered Full-Stack Web Developer. By combining rigorous analytical problem-solving from engineering, a security-first mindset from cybersecurity, and modern AI integration capabilities, I build web applications that are not only intelligent and high-performing, but also robust and secure from the ground up. I bridge the gap between complex technical systems and seamless digital experiences.",
+  role: "BUILDING SECURE, AI-POWERED WEB APPS WITH ENGINEERING PRECISION",
+  summary:
+    "I bridge complex physical systems, modern web engineering, and intelligent automation. With hands-on expertise spanning full-stack development, healthcare equipment lifecycle management, and cybersecurity, I build software that is resilient, performant, and secure by design.",
+  competencyLabel: "Core Competencies",
+  competencies: [
+    {
+      name: "Full-Stack Developer",
+      icon: CodeXml,
+      detail:
+        "Building responsive web applications using React.js, JavaScript (ES6+), HTML5/CSS3, Bootstrap 5, Node.js, Express.js, MySQL, and REST APIs.",
+    },
+    {
+      name: "AI Integrator",
+      icon: BrainCircuit,
+      detail:
+        "Enhancing platforms with retrieval-augmented generation (RAG), custom chatbots, semantic search, and interactive AI coaches.",
+    },
+    {
+      name: "Cybersecurity Professional",
+      icon: ShieldCheck,
+      detail:
+        "CompTIA Security+ certified; applying threat detection, cryptography, network security, and secure code reviews to protect data and systems.",
+    },
+    {
+      name: "Biomedical Engineer",
+      icon: HeartPulse,
+      detail:
+        "Installing, calibrating, maintaining, and servicing critical clinical instrumentation—from life-support systems to diagnostic monitors and surgical suites.",
+    },
   ],
 };
 
@@ -39,12 +67,23 @@ const About = ({ profile }) => {
         {/* Heading end*/}
         <div className="row gy-5">
           {/* About me content start */}
-          <div className="col-lg-7 col-xl-8 text-center text-lg-start">
-            {about.paragraphs.map((paragraph) => (
-              <p key={paragraph}>
-                {paragraph}
-              </p>
-            ))}
+          <div className="col-lg-7 col-xl-8 text-start">
+            <p className={styles.lead}>{about.role}</p>
+            <p className={styles.copy}>{about.summary}</p>
+            <h3 className={styles.competencyHeading}>{about.competencyLabel}</h3>
+            <dl className={styles.competencies}>
+              {about.competencies.map(({ name, icon: Icon, detail }) => (
+                <div key={name}>
+                  <dt>
+                    <span className={styles.competencyIcon} aria-hidden="true">
+                      <Icon size={20} strokeWidth={1.75} />
+                    </span>
+                    {name}
+                  </dt>
+                  <dd>{detail}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
           {/* About me content end */}
           {/* about me personal detials start */}

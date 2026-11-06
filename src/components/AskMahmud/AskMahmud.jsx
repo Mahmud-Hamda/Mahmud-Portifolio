@@ -80,13 +80,13 @@ const polar = (angle, radius) => {
 };
 
 const starPath =
-  Array.from({ length: 10 }, (_, k) => polar(-90 + k * 36, k % 2 ? 2 : 5.8))
+  Array.from({ length: 10 }, (_, k) => polar(-90 + k * 36, k % 2 ? 2.4 : 6.5))
     .map(([x, y], n) => `${n ? "L" : "M"}${x.toFixed(2)} ${y.toFixed(2)}`)
     .join("") + "Z";
 
 const sparklePaths = [0, 1, 2, 3, 4].map((k) => {
-  const [x, y] = polar(-54 + k * 72, 6.2);
-  const s = 1.35;
+  const [x, y] = polar(-54 + k * 72, 7.15);
+  const s = 0.85;
   const i = s * 0.28;
   return [
     [x, y - s], [x + i, y - i], [x + s, y], [x + i, y + i],
@@ -106,7 +106,7 @@ const renderText = (text, { highlightNames = true } = {}) =>
 
 const AskMahmud = () => {
   const titleId = useId();
-  const iconGradientId = `${titleId.replace(/:/g, "")}-ai`;
+  const starGradientId = `${titleId.replace(/:/g, "")}-star`;
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState([welcome]);
@@ -304,21 +304,21 @@ const AskMahmud = () => {
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
       >
-        <svg className={styles.aiMark} viewBox="0 0 16 16" aria-hidden="true">
-          <defs>
-            <linearGradient id={iconGradientId} x1="0" y1="8" x2="16" y2="8" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3ad4ff" />
-              <stop offset="46%" stopColor="#6a5cff" />
-              <stop offset="100%" stopColor="#ff4ad8" />
-            </linearGradient>
-          </defs>
-          <g fill={`url(#${iconGradientId})`}>
-            <path d={starPath} />
+        <span className={styles.icon}>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <defs>
+              <linearGradient id={starGradientId} x1="8" y1="1.5" x2="8" y2="14.5" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="42%" stopColor="#f4fffe" />
+                <stop offset="100%" stopColor="#7ebfb8" />
+              </linearGradient>
+            </defs>
+            <path className={styles.star} d={starPath} fill={`url(#${starGradientId})`} />
             {sparklePaths.map((d) => (
-              <path key={d} d={d} />
+              <path key={d} className={styles.sparkle} d={d} />
             ))}
-          </g>
-        </svg>
+          </svg>
+        </span>
         <span>Ask Mahmud</span>
       </button>
     </div>

@@ -38,7 +38,7 @@ My Work has four cards, in this order: Evangadi Forum, GPT Clone, Netflix Clone,
 - Netflix Clone: a React and TMDB movie browser. Live site https://netflix-clone-yscv.vercel.app/. Code https://github.com/Mahmud-Hamda/Netflix-Clone. It uses no AI and is not affiliated with Netflix.
 - Apple Clone: a responsive Apple store homepage. Live site https://student-layout.vercel.app/. Code https://github.com/Mahmud-Hamda/apple-clone. It is not affiliated with Apple.
 
-Client Speak has three quotes, each rated five stars, with a photo: Adugna Bekele, Eyob Berhe, and Mekuanint Tewende. The names, titles, quotes, and photos are in `src/sections/Testimonials/Testimonials.jsx`. These are real comments from people he has worked with. They are not sample cards and they are not case studies with results or metrics.
+Client Speak has four quotes, each rated five stars: Adugna Bekele, Rediat Terefe, Eyob Berhe, and Mekuanint Tewende. Adugna, Eyob, and Mekuanint have photos. Rediat is shown with initials because no portrait is on file. The names, titles, quotes, and photos are in `src/sections/Testimonials/Testimonials.jsx`. These are real comments from people he has worked with. They are not sample cards and they are not case studies with results or metrics.
 
 Ask Mahmud answers from the site's own material in the browser. It is not the GPT Clone and it does not call Gemini. The panel says "Ask Mahmud is AI and can make mistakes." One visitor is limited to 5 questions a minute, 10 questions a day, 1,000 characters, and 30 requests a minute. Those counts live in the browser, so clearing site data starts them over.
 
@@ -68,5 +68,5 @@ Absences future work must not fill in:
 
 1. Treat a hiring decision and a client decision as equal jobs for this page.
 2. Hold the position as biomedical engineering, cybersecurity, and AI-powered full-stack work together.
-3. Keep proof honest. The three Client Speak quotes and the four project cards are the confirmed work. Leave the Biomedical filter empty until a real project belongs there.
+3. Keep proof honest. The four Client Speak quotes and the four project cards are the confirmed work. Leave the Biomedical filter empty until a real project belongs there.
 4. Add a customer, result, quote, or social profile only when it is actually on file.

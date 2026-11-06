@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import adugnaBekele from "../../assets/images/testimonial/adugna-bekele.png";
 import eyobBerhe from "../../assets/images/testimonial/eyob-berhe.jpg";
 import mekuanintTewende from "../../assets/images/testimonial/mekuanint-tewende.png";
+import rediatTerefe from "../../assets/images/testimonial/Redet-Terefe.jpg";
 import styles from "./Testimonials.module.css";
 
 const SLIDE_INTERVAL_MS = 5000;
@@ -19,6 +20,13 @@ const reviews = [
     rating: 5,
   },
   {
+    name: "Rediat Terefe",
+    position: "Fullstack Developer and Instructor @ Evangadi",
+    src: rediatTerefe,
+    desc: "Mahmud Hamda is a dedicated and hardworking individual who consistently shows a strong commitment to learning and personal growth.",
+    rating: 5,
+  },
+  {
     name: "Eyob Berhe",
     position: "Cloud Platform Engineer | Tech Solutions Architecture Associate Manager | DevOps | Kubernetes | Docker | Full\u00A0Stack Web Developer",
     src: eyobBerhe,
@@ -32,6 +40,8 @@ const reviews = [
     desc: "Mahmud Hamda is a creative, dedicated, and passionate individual who consistently demonstrates a strong commitment to his work. I appreciate his problem-solving mindset, willingness to learn, and drive to deliver quality results. It's a pleasure to know and work with him.",
     rating: 5,
   },
+
+  
 ];
 
 const Testimonials = () => {

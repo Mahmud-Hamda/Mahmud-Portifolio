@@ -13,54 +13,82 @@
 .launcher {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  height: 44px;
-  padding: 0 14px 0 2px;
-  border: 1px solid color-mix(in srgb, var(--button-ink) 28%, var(--button));
-  border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, #fff 24%, var(--button)) 0%,
-    var(--button) 46%,
-    color-mix(in srgb, #000 26%, var(--button)) 100%
-  );
-  color: var(--button-ink);
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 38%, transparent),
-    0 8px 16px color-mix(in srgb, var(--button) 34%, transparent);
+  gap: 12px;
+  padding: 8px 20px 8px 10px;
+  border-radius: 9999px;
+  font-size: 15px;
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: -0.01em;
   line-height: 1;
+  color: #ffffff;
+  background: #216262;
+  border: 1px solid #1a5453;
   cursor: pointer;
+  outline: none;
+  box-shadow: 0 10px 24px rgba(20, 70, 70, 0.22);
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 200ms ease;
 }
 
-.aiMark {
-  box-sizing: border-box;
-  width: 38px;
-  height: 38px;
-  padding: 2px;
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   flex: none;
   border-radius: 50%;
-  background: #fff3cd;
+  background: #d6f9f5;
+  transition:
+    transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.launcher:hover,
-.launcher:focus-visible {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, #fff 34%, var(--button)) 0%,
-    color-mix(in srgb, #fff 8%, var(--button)) 48%,
-    color-mix(in srgb, #000 14%, var(--button)) 100%
-  );
+.icon svg {
+  width: 30px;
+  height: 30px;
+  overflow: visible;
+  transition: transform 300ms ease;
+}
+
+.star {
+  stroke: #3f8f89;
+  stroke-width: 0.45;
+  stroke-linejoin: round;
+}
+
+.sparkle {
+  fill: #ffffff;
+  stroke: #3f8f89;
+  stroke-width: 0.28;
+  stroke-linejoin: round;
+}
+
+.launcher:hover {
+  transform: translateY(-2px) scale(1.015);
+  background: #26706e;
+  box-shadow: 0 14px 28px rgba(20, 70, 70, 0.32);
+}
+
+.launcher:hover .icon {
+  background: #e7fffc;
+  transform: scale(1.05);
+}
+
+.launcher:hover .icon svg {
+  transform: rotate(15deg) scale(1.1);
 }
 
 .launcher:active {
-  background: linear-gradient(
-    180deg,
-    var(--button) 0%,
-    color-mix(in srgb, #000 22%, var(--button)) 100%
-  );
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+  transition-duration: 80ms;
+}
+
+.launcher:focus-visible {
+  outline: 2px solid #216262;
+  outline-offset: 3px;
 }
 
 .panel {

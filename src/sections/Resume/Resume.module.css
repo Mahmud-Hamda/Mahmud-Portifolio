@@ -40,15 +40,6 @@
   line-height: 1.4;
 }
 
-.resume-group-label {
-  margin: 8px 0 12px;
-  color: #121212;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .resume-card-title {
   margin-bottom: 4px;
   color: #121212;
@@ -64,6 +55,75 @@
   font-size: 18px;
   line-height: 1.556;
   font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.resume-flow {
+  list-style: none;
+  margin: 2px 0 8px;
+  padding: 0;
+}
+
+.resume-flow-item {
+  position: relative;
+  margin: 0;
+  padding: 0 0 32px 32px;
+}
+
+.resume-flow-item:last-child {
+  padding-bottom: 2px;
+}
+
+.resume-flow-item::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: -8px;
+  width: 2px;
+  background: #b0b0b0;
+}
+
+.resume-flow-item:last-child::before {
+  display: none;
+}
+
+.resume-flow-item::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #9a9a9a;
+}
+
+.resume-flow-item.is-current::after {
+  background: var(--primary);
+}
+
+.resume-flow-date {
+  margin: 0 0 6px;
+  color: #3a3a3a;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.resume-flow .resume-card-title {
+  margin: 0;
+}
+
+.resume-flow-place {
+  margin: 6px 0 0;
+  color: var(--primary-dark);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
   overflow-wrap: anywhere;
 }
 
@@ -148,31 +208,108 @@
 }
 
 #resume .resume-skills {
-  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   margin-bottom: 8px;
   background: transparent;
 }
 
+#resume .resume-skill-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px 48px;
+}
+
+#resume .resume-skill-block {
+  max-width: 100%;
+}
+
 #resume .resume-skill-group {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: #121212;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3;
 }
 
-#resume .resume-skill-list {
+#resume .resume-skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-#resume .resume-skill-list li {
+#resume .resume-skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 112px;
+  min-height: 104px;
+  margin: 0;
+  padding: 14px 8px 12px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: 0 18px 24px rgba(0, 0, 0, 0.07);
   color: #121212;
-  font-size: 16px;
-  line-height: 1.45;
-  padding: 4px 0;
-  overflow-wrap: anywhere;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+#resume .resume-skill-mark {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#resume .resume-skill-mark svg {
+  width: 32px;
+  height: 32px;
+}
+
+#resume .resume-skill-name {
+  color: #121212;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+}
+
+#resume .resume-skill-card:hover,
+#resume .resume-skill-card:focus-within {
+  border-color: var(--primary);
+  box-shadow:
+    0 18px 24px rgba(0, 0, 0, 0.07),
+    0 0 0 1px var(--primary);
+  transform: translateY(-4px);
+}
+
+#resume .resume-skill-card:hover .resume-skill-mark,
+#resume .resume-skill-card:focus-within .resume-skill-mark {
+  transform: translateY(-2px) scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #resume .resume-skill-card,
+  #resume .resume-skill-mark {
+    transition: none;
+  }
+
+  #resume .resume-skill-card:hover,
+  #resume .resume-skill-card:focus-within,
+  #resume .resume-skill-card:hover .resume-skill-mark,
+  #resume .resume-skill-card:focus-within .resume-skill-mark {
+    transform: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -199,7 +336,20 @@
     font-size: 16px;
   }
 
-  #resume .resume-skills {
-    padding: 16px 16px 4px;
+  .resume-flow-item {
+    padding-bottom: 26px;
+  }
+
+  .resume-flow-place {
+    font-size: 15px;
+  }
+
+  #resume .resume-skill-card {
+    width: 100px;
+    min-height: 96px;
+  }
+
+  #resume .resume-skill-row {
+    gap: 28px 24px;
   }
 }
